@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_practice3</title>
+    <style>
+        #table1{
+            border-collapse: collapse;
+            
+        }
+        .th1{
+            border:2px solid black;
+            text-align: center;
+            padding: 5px;
+        }
+        #table2{
+            margin:0px;
+            padding: 0%;
+            border: 1px solid black;
+        }
+        .th2{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table id="table1">
+        <thead>
+            <tr >
+                <th colspan="2" rowspan="2" class="th1" >CI</th>
+                <th class="th1" rowspan="2">All gender</th>
+                <th class="th1" colspan="2">By gender</th>
+            </tr>
+            <tr>
+                <td class="th1">
+                    <table id="table2">
+                        <tr>
+                            <th class="th2">male</th>
+                            <th class="th2">female</th>
+                        </tr>
+                         <tr>
+                            <td class="th2">9215604</td>
+                            <td class="th2">4512358</td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="th1">Rural</th>
+                <td class="th1">6521458</td>
+                <td class="th1">4215389</td>
+                <td class="th1" colspan="2">2152348</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

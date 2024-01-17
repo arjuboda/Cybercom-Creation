@@ -21,12 +21,8 @@ h1{
 }
 .formdet{
     width: 100%;
-    border: 2px solid green;
     padding: 0% 20%;
     margin-top: 4%;
-        /* position: absolute; */
-    
-     
 }
 input{
     width: 100%;

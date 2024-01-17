@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_praqctice5</title>
+    <link rel="stylesheet" href="html_practice5.css">
+    <link rel="stylesheet"  href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class=" container">
+        <div class="heading">
+            <h1>Contact Us</h1>
+        </div>
+        <div class="formdet">
+            <form  action="#" method="post" id="contactform">
+                <i class="fa fa-user"></i>
+                <input type="text" name="name" id="name" placeholder="enter your name">
+                <i class="fa fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="e.g. example@gmail.com">
+                <i class="fa fa-phone"></i>
+                <input type="number" name="contactNo" id="contactNo" placeholder="e.g.+91 0000000000">
+                <i class="fa fa-comment"></i>
+                <textarea name="comments" placeholder="your comments" id="comments" cols="85" rows="10"></textarea >
+                <input type="button" value="Send Now" id="btn" onclick="alertmesg()" >
+            </form>
+        </div>
+    </div>
+    <script>
+        function alertmesg(){
+            alert("your form submited successfully");
+            document.getElementById('contactform').reset();
+        }
+    </script>
+</body>
+</html>

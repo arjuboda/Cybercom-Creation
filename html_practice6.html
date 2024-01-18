@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_practice6</title>
+    <link rel="stylesheet" href="html_practice6.css">
+</head>
+<body>
+    <div class="container">
+        <form action="success.html" method="post" >
+            <fieldset>
+                <legend>Your Address</legend>
+                <table>
+                    <tr>
+                        <td class="f-col"> <label for="firstName">First Name</label></td>
+                        <td><input type="text" name="first name" id="firstName"></td>
+                    </tr>
+                    <tr>
+                        <td> <label for="lastName">Last Name</label></td>
+                        <td><input type="text" name="last name" id="lastName"></td>
+                    </tr>
+                    <tr>
+                        <td> <label for="street">Street</label></td>
+                        <td><input type="text" name="street" id="street"></td>
+                    </tr>
+                    <tr>
+                        <td> <label for="city">City</label></td>
+                        <td><input type="text" name="city" id="city"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>Additional Details</legend>
+                <table>
+                    <tr>
+                        <td class="f-col"> <label for="Biography">Biography</label></td>
+                        <td><textarea name="Biography" id="Biography" cols="20" rows="3"></textarea></td>  
+                    </tr>
+                    <tr>
+                        <td > <label for="image">Image</label></td>
+                        <td><input type="file" name="image" id="image"></td>  
+                    </tr>
+                    <tr>
+                        <td ><label for="ageGroup">Age Group</label></td>
+                        <td>
+                            <select name="ageGroup" id="ageGroup">
+                                <option value="1">0 to 9 Years</option>
+                                <option value="2">10 to 29 Years</option>
+                                <option value="3">30 to 70 Years</option>
+                                <option value="4">Above 70</option>
+                            </select>
+                        </td>  
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend> Interest</legend>
+                    <table>
+                        <tr>
+                            <td class="f-col"><label for="Hobbies">Hobbies</label></td>
+                            <td>
+                                <select name="FavCar" id="FavCar" size="4" multiple>
+                                    <option value="soccer">Playing soccer</option>
+                                    <option value="dancing">Dancing</option>
+                                    <option value="gardning">Gardning</option>
+                                    <option value="movies">Watching movies</option>
+                                </select>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td><label for="FavCar">Favourite car?</label></td>
+                            <td>
+                                <select name="FavCar" id="FavCar">
+                                    <option value="Volvo">Volvo</option>
+                                    <option value="Tesla">Tesla</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="Mercedes">Mercedes</option>
+                                </select>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td><label for="pubTransp">Favorite public transport?</label></td>
+                            <td>
+                                <select  name="pubTransp " >
+                                    <optgroup label="Ground">
+                                      <option value="Train">Train</option>
+                                      <option value="Bus">Bus</option>
+                                    </optgroup>
+                                    <optgroup label="Water">
+                                      <option value="steamers">steamers</option>
+                                      <option value="river cruises">river cruises</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+            </fieldset>
+            <div class="subcontainer">
+                <input class="btn" type="submit" value="Submit" >
+                <input class="btn" type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

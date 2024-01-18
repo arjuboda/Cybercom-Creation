@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+}
+.container{
+    margin: 5% auto;
+    width: 70%
+}
+fieldset{
+  
+    margin-top: 10px;
+}
+legend{
+    font-weight: 700;
+}
+table{
+    width: 70%;
+    vertical-align: top;
+    padding-left: 10px;
+}
+.f-col{
+    width: 25%;
+}
+td{
+    vertical-align: top;
+}
+.subcontainer{
+    text-align: center;
+}
+.btn{
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+}
+.btn:hover{
+    border: 1px solid black;
+}

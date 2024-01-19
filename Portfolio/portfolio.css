@@ -1,0 +1,221 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+body{
+   color: rgb(0, 0, 0);
+    background-color: #eff4fd;
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+nav{
+    height: 15vh;
+    background-color: transparent;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+}
+#logo{
+    height: 97%;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+nav ul li a:hover{
+    color: blue;
+}
+.subcontainer{
+    width: 90%;
+    margin: auto;
+}
+.leftpart{
+    display:inline;
+    /* height: inherit; */
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0%;
+    
+}
+.leftpart{
+    width: 60%;
+    padding-top: 13%;
+    padding-right: 10%;
+
+}
+
+.leftpart span{
+    color: rgb(255, 165, 0);
+}
+.leftpart h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height:60px ;
+}
+
+.leftpart p{
+    color: #555;
+    line-height: 22px;
+    margin-top: 10px;
+    margin-right: 10%;
+}
+.leftpart button{
+    background-color: #000;
+    padding: 10px 18px;
+    font-weight: bold;
+    color: #fff;
+    width: 40%;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+.leftpart button:hover{
+    color: #333; 
+    background-color:#ffa500;
+}
+
+
+.typing-container {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+}
+.typing-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 10s steps(15, end) infinite;
+}
+
+.rightpart{
+    width:40%;
+    float: left;
+    position: relative;
+    height: 85vh;
+    margin: 0%;
+}
+.front{
+    z-index:100;
+    width: 50%;
+    position: relative;
+    top: 30%;
+    left:23%;
+}
+
+.back{
+    /* width: inherit; */
+    z-index: 0;
+    position: absolute;
+    top:10%;
+    padding: 0px;
+    right:0%;
+}
+.back:hover{
+    transform: rotate(10deg);
+    bottom: 20px;
+}
+
+.tech{
+    width: 33%;
+    color: black;
+}
+.tech p{
+    padding:20px
+}
+
+.non-tech{
+    color: black;
+    width:33%
+}
+.container .head{
+    font-size: 30px;
+    font-weight: 800;
+    margin: 30px 0px 0px 65px;
+}
+
+.conform .leftpart{
+    padding-top:20px;
+}
+.conform .rightpart{
+    padding-top:30px;
+}
+.conform input,textarea{
+
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 3px 10px;
+    border-top: #444;
+    border-radius: 3px;
+    /* box-shadow: 10px 30px 90px#333; */
+}
+.conform img{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#contactText{
+    color: #222;
+    font-weight: 600;
+    margin: 0px 0px 18px 0px;
+}
+
+#submitbtn{
+    width: 60%;
+    margin: 0% 20%;
+    color: whitesmoke;
+    background-color: #222;
+    padding: 6px 0px;
+    border-radius: 10px;
+}
+
+.formarea{
+    background-color: hsl(43, 98%, 53%);
+    padding: 40px 50px 5px 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formEnd{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.fa{
+    font-size: 20px;
+}
+
+.fa:hover{
+    transform: scale(1.2);
+}

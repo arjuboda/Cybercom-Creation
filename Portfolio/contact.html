@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="portfolioImg/logo.png" alt="Logo" id="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" onclick="desplayResume()">Resume</a></li>
+                <li><a href="#contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="subcontainer conform">
+            <div class="leftpart" style="padding-right: 5%;">
+                <img src="portfolioImg/contact-banner_o.png" alt="contact Me">
+            </div>
+            <div class="rightpart">
+                <div class="formarea">
+                    <h1 id="contactText">Contact me</h1>
+                    <form action="#" method="post">
+                        <input type="text" name="name" id="name"  placeholder="Enter your name" required>
+                        <input type="email" name="email" id="email" required placeholder="Enter your email">
+                        <textarea name="" id="" cols="30" rows="3"  required placeholder="Enter Message"></textarea>
+                        <input type="submit" value="Submit" onclick="successmsg()" id="submitbtn">
+                    </form>
+                    <div  class="formEnd">
+                        <p>Connect with me on: </p>&nbsp; &nbsp;
+                        <div class="icon">
+                            <i class="fa fa-facebook-square"> </i>&nbsp;
+                            <i class="fa fa-linkedin-square"> </i>&nbsp;
+                            <i class="fa fa-pinterest-square"> </i>&nbsp;
+                            <i class="	fa fa-instagram"> </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    <script src="resume.js"></script> 
+</body>
+</html>

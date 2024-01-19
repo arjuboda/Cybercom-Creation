@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html_practice7</title>
+    <link rel="stylesheet"  href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="html_practice7.css">
+</head>
+<body>
+    <div class="container">
+        <form method="post" id="frm" action="information.php">
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <h2>Personal Information</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="f_name">First Name: </label></th>
+                    <td><input type="text" name="f_name" id="f_name" required></td>
+                </tr>
+                <tr>
+                    <th><label for="l_name">Last Name: </label></th>
+                    <td><input type="text" name="l_name" id="l_name"></td>
+                </tr>
+                <tr>
+                    <th><label for="dob">Date Of Birth:</label></th>
+                    <td >
+                        <select name="day" id="day" style="width: 21%;" required>
+                            <option value="">Day</option>
+                        </select>
+                        <select name="month" id="month" style="width: 21%;" required>
+                            <option value="">Month</option>
+                        </select>
+                        <select name="year" id="year" style="width: 21%;" required>
+                            <option value="">year</option>
+                        </select>  
+                        <div class="tooltip">
+                            <i class="fa fa-question-circle" style="font-size:18px;color:rgb(16, 226, 249)"></i>
+                            <span class="text">Choose your birthdate correctly</span>
+                        </div>        
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th><label for="gender">Gender:</label></th>
+                    <td>
+                        <select name="gender" id="gender" style="width:67%">
+                            <option value="">Choose a Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="tooltip">
+                            <i class="fa fa-question-circle" style="font-size:18px;color:rgb(16, 226, 249)"></i>
+                            <span class="text">choose a gender</span>
+                        </div>  
+                    </td>
+                </tr>
+    
+                <tr>
+                    <th colspan="2">
+                        <h2>Account Information</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th rowspan="2"><label for="email">Email:</label></th>
+                    <td><input type="email" name="email" id="email" required></td>
+                </tr>
+                <tr>
+                    <td class="msg">(your email address will be your username)
+                        <span class="error-message" id="passwordError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="r_email">Re-type Email:</label></th>
+                    <td><input type="email" name="r_email" id="r_email"></td>
+                    
+                </tr>
+                <tr>
+                    <th rowspan="2"><label for="psw">Password:</label></th>
+                    <td><input type="password" name="password" id="psw" required></td>
+                    <span class="error-message" id="pswError"></span>
+                </tr>
+                <tr>
+                    <td class="msg">(min. 8 characters, 1 number, Case-Sensitive)</td>
+                </tr>
+                <tr>
+                    <th><label for="r_psw">Re-type Password:</label></th>
+                    <td><input type="password" name="r_password" id="r_psw"></td>
+                </tr>
+                <tr>
+                    <th><label for="question">Security Question:</label></th>
+                    <td>
+                        <select name="question" id="question">
+                            <option value="">Choose a security question</option>
+                            <option value="1">question1</option>
+                            <option value="2">question2</option>
+                        </select>
+                        <div class="tooltip">
+                            <i class="fa fa-question-circle" style="font-size:18px;color:rgb(16, 226, 249)"></i>
+                            <span class="text">Choose any one question</span>
+                        </div>  
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="2"><label for="s_ans">Security Ansewer:</label></th>
+                    <td><input type="text" name="answer" id="s_ans"></td>
+                </tr>
+                <tr>
+                    <td class="msg">(not case sensitive)</td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <h2>Contact Information</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="Address">Address:</label></th>
+                    <td><input type="text" name="Address" id="Address"></td>
+                </tr>
+                <tr>
+                    <th><label for="City">City:</label></th>
+                    <td><input type="text" name="City" id="City"></td>
+                </tr>
+                <tr>
+                    <th><label for="state">State:</label></th>
+                    <td>
+                        <select name="state" id="state">
+                            <option value="">Choose a state:</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Maharastra">Maharastra</option>
+                            <option value="Panjab">Panjab</option>
+                            <option value="Madhyaprades">Madhyaprades</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="Zip_code">Zip code:</label></th>
+                    <td><input type="number" name="Zip_code" id="Zip_code" style="width:30%"><input type="text" name="opt" id="opt" value="optional" style="width:30%"></td>
+
+                </tr>
+                <tr>
+                    <th rowspan="2"><label for="Phone">Phone:</label></th>
+                    <td><input type="number" name="Phone" id="Phone" style="width: 39%;" required>
+                        <div class="tooltip">
+                            <i class="fa fa-question-circle" style="font-size:18px;color:rgb(16, 226, 249)"></i>
+                            <span class="text">write number currectly</span>
+                        </div>  
+                        <select name="t_phone" id="t_phone" style="width: 25%;">
+                        <option value="Mobile">Mobile</option>
+                        <option value="cellphone">cellphone</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="msg">No spaces or dashes</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td >
+                        <input type="submit" value="Submit" class="btn" >
+                        <input type="reset" value="Reset" class="btn" >
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function displayDays() {
+            var dayDropdown = document.getElementById("day");
+            for (var i = 1; i <= 31; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                dayDropdown.add(option);
+            }
+        }
+        function displayMonths() {
+            var monthDropdown = document.getElementById("month");
+            var months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            for (var i = 0; i < months.length; i++) {
+                var option = document.createElement("option");
+                option.value = i + 1;
+                option.text = months[i];
+                monthDropdown.add(option);
+            }
+        }
+        function displayYears() {
+            var yearDropdown = document.getElementById("year");
+            var currentYear = new Date().getFullYear();
+            var startYear = currentYear - 100; 
+            for (var i = currentYear; i >= startYear; i--) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                yearDropdown.add(option);
+            }
+        }
+        displayDays();
+        displayMonths();
+        displayYears();
+
+        document.getElementById("frm").addEventListener("submit", function (event) {
+            var passwordInput = document.getElementById("psw");
+            var repasswordInput = document.getElementById("r_psw");
+            var emailInput = document.getElementById("email");
+            var reEmailInput = document.getElementById("r_email");
+            // var passwordError = document.getElementById("pswError");
+            console.log("printing")
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+            if (!passwordRegex.test(passwordInput.value)) {
+                window.alert('Password must be at least 8 characters, include 1 number, and be case-sensitive')
+                event.preventDefault(); 
+                passwordInput.value=""
+            }else if (passwordInput.value !== repasswordInput.value) {
+                window.alert("Passwords do not match");
+                event.preventDefault(); 
+                passwordInput.value="";
+                repasswordInput.value="";
+            } else if (emailInput.value !== reEmailInput.value) {
+                window.alert("Email do not match");
+                event.preventDefault(); 
+                emailInput.value="";
+                reEmailInput.value="";
+            } else {
+                // passwordError.innerHTML = ""; 
+            }
+        });
+    </script>
+</body>
+</html>

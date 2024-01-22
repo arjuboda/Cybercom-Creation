@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Registration Form</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Flight Registration</h1>
+        <form action="submit.html" id="flightRegistrationFrm" name="flightRegistrationFrm">
+            <div class="subcontainer">
+                <table>
+                    <tr>
+                        <th colspan="2">
+                            <h3 style="width: 18%;">Flight Details</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="txtFrom" id="txtFrom" placeholder="From"></td>  
+                        <td><input type="text" name="txtTo" id="txtTo" placeholder="To"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="txtPreferedAirline" id="txtPreferedAirline" placeholder="Prefered Airline"></td>  
+                        <td><input type="text" name="txtPreferedSeat" id="txtPreferedSeat" placeholder="Prefered Seat"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="date" name="dtPreferedDate" id="dtPreferedDate" placeholder="Prefered Date"></td>  
+                        <td><input type="time" name="tmPreferedTime" id="tmPreferedTime" placeholder="Prefered Time"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="passanger">
+                            <input type="number" name="numAdult" id="numAdult" placeholder="Adult (12+ years)" style="width:30%">
+                            <input type="number" name="numChildren" id="numChildren" placeholder="Children (2-11 years)" style="width:30%">
+                            <input type="number" name="numInfants" id="numInfants" placeholder="Infants( Under 2 years)" style="width:30%">
+                        </td>
+                    </tr>
+
+                    
+                    <tr >
+                        <th colspan="2">
+                            <h3 style="margin-top: 20px;">Personal Details</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="txtfistName" id="txtfistName" placeholder="First Name"></td>  
+                        <td><input type="text" name="txtlastName" id="txtlasttName" placeholder="Last Name"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" name="numContactNo" id="numContactNo" placeholder="Primary Contact Number"></td>
+                        <td><input type="number" name="numSecondContactNo" id="numSecondContactNo" placeholder="Second Contact Number"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="email" name="emlPrimaryEmail" id="emlPrimaryEmail" placeholder="Email"></td>
+                        <td><input type="email" name="emlSecondEmail" id="emlSecondEmail" placeholder="Second Email Address"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Submit" id="submitBtn" style="width: 30%;">
+                            <input type="reset" value="Clear Form" id="resetBtn" style="width: 30%;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script> <!-- jQuery validation library*/-->
+    <script src="
+    https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> <!-- jQuery validation plugin*/-->
+    <script src="index.js"></script>
+</body>
+</html>

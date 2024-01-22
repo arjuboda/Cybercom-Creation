@@ -1,0 +1,76 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    /* overflow: hidden; */
+}
+
+.container{
+    background-image: url(backgroundImg.jpg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    color: whitesmoke;
+    text-align: center;
+    height: 100vh;
+}
+h1{
+    padding-top: 40px;
+}
+.subcontainer{
+    margin: auto;
+    width: 60%;
+    height: 75vh;
+    background-color: rgba(0, 0, 0,0.8);
+    border-radius: 5px;
+}
+.subcontainer table{
+    padding-bottom: 20px;
+    margin: 20px auto;
+    width: 80%;
+    height: 100%;
+}
+.subcontainer table th{
+    text-align: left;
+    padding: 10px;
+}
+.subcontainer table h3{
+    padding-bottom: 2px;
+    border-bottom: 4px solid rgb(154, 237, 243);
+    width:22%;
+    border-radius: 5px;
+}
+.subcontainer table input{
+    width: 90%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+#submitBtn{
+    margin-top: 10px;
+    color: black;
+    background-color: rgb(154, 237, 243);
+    padding: 7px 3px;
+    border-radius:5px ;
+    font-weight: 600;
+}
+
+#resetBtn{
+    color: black;
+    background-color: rgb(234, 243, 154);
+    padding: 7px 0px;
+    border-radius:5px ;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+
+.error{
+    color:rgb(255, 0, 0);
+    display:inline-block;
+    text-align: left;
+}

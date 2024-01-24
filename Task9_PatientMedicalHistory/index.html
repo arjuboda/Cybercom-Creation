@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <form action="#" id="patientInfoForm">
+            <div class="form-header main-header">
+                <h1> General Patient Information</h1>
+            </div>
+            <table>
+                <tr>
+                    <th colspan="2">
+                        <label for="selGender">Patient Gender <span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td >
+                        <select name="selGender" id="selGender">
+                            <option value="">Please Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="txtFirstName">Patient Name<span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="txtFirstName" id="txtFirstName">
+                    </td>
+                    <td>
+                        <input type="text" name="txtLastName" id="txtLastName">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="selDate">Patient Birth Date <span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select name="month" id="month" style="width: 33%;" >
+                            <option value="">Please Select a Month</option>
+                        </select>
+                        <select name="day" id="day" style="width: 32%;" >
+                            <option value="">Please Select a Day</option>
+                        </select>
+                        <select name="year" id="year" style="width: 33%;" >
+                            <option value="">Please Select a year</option>
+                        </select>  
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="numPatientHeight">Patient Height (cm's)<span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-row"> <input type="number" name="numPatientHeight" id="numPatientHeight" placeholder="ex: 176"> 
+                    </td><td></td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        <label for="numPatientWeight">Patient Weight (kg's)<span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" name="numPatientWeight" id="numPatientWeight" placeholder="ex: 70">   
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="emlPatientEmail">Patient E-Mail<span class="requiredIcon">*</span></label>
+                    </th>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" name="emlPatientEmail" id="emlPatientEmail" placeholder="ex: myname@example.com"> 
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="txtReason">Reason for seeing the doctor:<span class="requiredIcon">*</span></label>
+                    </th>
+                </tr>
+                <tr>
+                    <td >
+                        <input type="text" name="txtReason" id="txtReason">
+                    </td>
+                </tr>   
+                <tr>
+                    <th colspan="2">
+                        <h2 colspan="2">Patient Medical History</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <label for="txtAreaDrugAllergies">Please list any drug allergies</label>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea name="txtAreaDrugAllergies" id="txtAreaDrugAllergies" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        <label> Have you ever had (Please check all that apply) </label></div>
+                    </th>
+                </tr>
+                
+                <tr>
+                    <td >
+                        <input type="checkbox" name="checkboxAnemia" id="checkboxAnemia" > <label for="checkboxAnemia"> Anemia </label>  
+                    </td>
+                </tr>
+                <tr><td>
+                    <input type="checkbox" name="checkboxAsthma" id="checkboxAsthma" > <label for="checkboxAsthma"> Asthma </label>  
+
+                </td></tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxArthritis" id="checkboxArthritis" > <label for="checkboxArthritis"> Arthritis </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxCancer" id="checkboxCancer" > <label for="checkboxCancer"> Cancer </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxGout" id="checkboxGout" >  <label for="checkboxGout"> Gout</label>  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxDiabetes" id="checkboxDiabetes" > <label for="checkboxDiabetes"> Diabetes</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxEmotionalDisorder" id="checkboxEmotionalDisorder" > <label for="checkboxEmotionalDisorder"> Emotional Disorder </label>  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxEpilepsySeizures" id="checkboxEpilepsySeizures" > <label for="checkboxEpilepsySeizures"> Epilepsy Seizures </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxFaintingSpells" id="checkboxFaintingSpells" > <label for="checkboxFaintingSpells"> Fainting Spells </label>  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxGallstones" id="checkboxGallstones" > <label for="checkboxGallstones"> Gallstones </label>  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxHeartDisease" id="checkboxHeartDisease" > <label for="checkboxHeartDisease"> Heart Disease </label>  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxHeartAttack" id="checkboxHeartAttack" > <label for="checkboxHeartAttack"> Heart Attack</label>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxRheumaticFever" id="checkboxRheumaticFever" > <label for="">  Rheumatic Fever</label>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxHighBloodPressure" id="checkboxHighBloodPressure" > <label for="checkboxHighBloodPressure"> High Blood Pressure </label>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxDigestiveProblems" id="checkboxDigestiveProblems" > <label for="checkboxDigestiveProblems">Digestive Problems  </label>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxUlcerativeColitis" id="checkboxUlcerativeColitis" > <label for="checkboxUlcerativeColitis"> Ulcerative Colitis</label>  
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <input type="checkbox" name="checkboxUlcerDisease" id="checkboxUlcerDisease" > <label for="checkboxUlcerDisease"> Ulcer Disease </label>  
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxHepatitis" id="checkboxHepatitis" > <label for="checkboxHepatitis">Hepatitis  </label>  
+                </td>
+            </tr>
+            <tr><td>
+                <input type="checkbox" name="checkboxKidneyDisease" id="checkboxKidneyDisease" > <label for="checkboxKidneyDisease">  Kidney Disease</label>  
+            </td></tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxLiverDisease" id="checkboxLiverDisease" > <label for="checkboxLiverDisease"> Liver Disease</label>  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxSleepApnea" id="checkboxSleepApnea" > <label for="checkboxSleepApnea"> Sleep Apnea</label>  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxUseCPAPmachine" id="checkboxUseCPAPmachine" > <label for="checkboxUseCPAPmachine">Use a C-PAP machine </label>  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxThyroid" id="checkboxThyroid" > <label for="checkboxThyroid">Thyroid Problems </label>  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxTuberculosis" id="checkboxTuberculosis" > <label for="checkboxTuberculosis"> Tuberculosis</label>  
+                </td>
+            </tr>
+            <tr><td>
+                <input type="checkbox" name="checkboxVenereal" id="checkboxVenereal" > <label for="checkboxVenereal"> Venereal Disease</label>  
+            </td></tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkboxNeurologicalDisorders" id="checkboxNeurologicalDisorders" > <label for="checkboxNeurologicalDisorders"> Neurological Disorders</label>  
+                </td>
+            </tr>
+            <tr><td> <input type="checkbox" name="checkboxBleedingDisorders" id="checkboxBleedingDisorders" > <label for="checkboxBleedingDisorders"> Bleeding Disorders</label>  </td></tr>
+            <tr><td><input type="checkbox" name="checkbox" id="" > <label for=""> Lung Disease</label>  </td></tr>         
+            <tr><td> <input type="checkbox" name="checkbox" id="" > <label for="">Emphysema </label>   </td></tr>  
+            <tr>
+                <th>
+                    <label for="txtOtherIllnesses">Other illnesses:</label></div>
+                </th>
+            </tr>             
+            <tr>
+                <td>
+                    <input type="text" name="txtOtherIllnesses" id="txtOtherIllnesses" />
+                </td>
+            </tr> 
+            <tr>
+                <th colspan="2">
+                    <label for="txtAreaOperationsAndDates">Please list any Operations and Dates of Each</label>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="txtAreaOperationsAndDates" id="txtAreaOperationsAndDates" cols="30" rows="10"></textarea></div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="txtAreaCurrentMedications">Please list your Current Medications</label>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="txtAreaCurrentMedications" id="txtAreaCurrentMedications" cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <h2>Healthy & Unhealthy Habits</h2>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <label>Exercise</label>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoExersice" id="rdoNever"><label for="rdoNever">Never</label>
+                </td>
+            </tr>
+            <tr><td>
+                <input type="radio" name="rdoExersice" id="rdo34Day"><label for="rdo34Day">3-4 Day</label>
+            </td></tr>
+            <tr><td>
+                <input type="radio" name="rdoExersice" id="rdo12Day"><label for="rdo12Day">1-2 Day</label>
+            </td></tr>
+            <tr><td>
+                <input type="radio" name="rdoExersice" id="rdo5PlusDay"><label for="rdo5PlusDay">5+ Day</label>
+            </td></tr>
+            <tr>
+                <th colspan="2">
+                    <label>Eating following a diet</label>
+                    
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoDiet" id="rdoLooseDiet"><label for="rdoLooseDiet">I have a loose diet</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoDiet" id="rdoStrictDiet"><label for="rdoStrictDiet">I have a Strict diet</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoDiet" id="rdoDontHaveDiet"><label for="rdoDontHaveDiet">I dont't have a diet plan</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                    <label>Caffeine Consumption</label></div>
+                </th>
+            </tr>
+            <tr><td>
+                <input type="radio" name="rdoCaffeine" id="rdoDoNotUse"><label for="rdoDoNotUse">I don't use caffiene</label>
+            </td></tr>
+            <tr><td> <input type="radio" name="rdoCaffeine" id="rdo12CupsDay"><label for="rdo12CupsDay">1-2 cups/Day</label>  </td></tr>
+            <tr><td> <input type="radio" name="rdoCaffeine" id="rdo34CupsDay"><label for="rdo34CupsDay">3-4 cups/Day</label> </td></tr>
+            <tr><td>  <input type="radio" name="rdoCaffeine" id="rdo5PlusCupsDay"><label for="rdo5PlusCupsDay">5+ cups/Day</label></td></tr>
+            <tr>
+                <th colspan="2"> <label>Do you smoke?</label></th>
+            </tr>
+            <tr><td>  <input type="radio" name="rdoSmoke" id="rdoNo"><label for="rdoNo">No</label></td></tr>
+            <tr><td>  <input type="radio" name="rdoSmoke" id="rdo01packDay"><label for="rdo01packDay">1-2 packs/Day</label></td></tr>
+            <tr><td><input type="radio" name="rdoSmoke" id="rdo12packDay"><label for="rdo12PackDay">3-4 packs/Day</label></td></tr>
+            <tr><td>
+                <input type="radio" name="rdoSmoke" id="rdo5PlusCupsDay"><label for="rdo5PlusCupsDay">2+ packs/Day</label></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <label for="txtAreaComments">Include other comments regarding your Medical History</label>
+                </th>    
+            </tr>
+            <tr><td colspan="2"><textarea name="txtAreaComments" id="txtAreaComments" cols="30" rows="10"></textarea></td></tr>
+     
+        </table>
+        <div class="form-footer">
+            <input type="submit" class="submitBtn" value="Submit">   
+        </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+           

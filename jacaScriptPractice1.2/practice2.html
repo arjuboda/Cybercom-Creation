@@ -1,0 +1,25 @@
+<!-- Create an object to store information about a product (e.g., name, price, quantity, etc.). 
+Write code to calculate the total cost of a specified quantity of the product. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice2</title>
+</head>
+<body>
+    <h1 id="totalPrice">Total price:</h1>
+    <script>
+        let product={
+            'name':'product1',
+            'price':200,
+        }
+        let quantity=prompt("write down number of quantity: ");
+        product.quantity=parseInt(quantity);
+        console.log(product);
+        var totalPrice = product.price * product.quantity;
+        document.getElementById('totalPrice').innerHTML +='<span>'+ totalPrice +'</span>';
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- Write a function that takes two objects as arguments and returns a new object that 
+combines the properties of both objects. For example, a function that takes two objects 
+with name and age properties and returns an object with name, age, and address 
+properties -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice5</title>
+</head>
+<body>
+    <script>
+
+        function combineTwoObject(firstObject,secondObject){
+            let combineObject={}
+            for(x in firstObject){
+                combineObject[x]=firstObject[x];
+            }
+            for (y in secondObject){
+                combineObject[y]=secondObject[y];
+            }
+            // console.log(combineObject);
+            return combineObject;
+        }
+
+        let firstObject={
+            'name':'arju'
+        }
+        let secondObject={
+            'age':21,
+            'address':'Rajkot'
+        }
+        let newObject = combineTwoObject(firstObject,secondObject)
+        console.log(newObject);
+    </script>
+</body>
+</html>

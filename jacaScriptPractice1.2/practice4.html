@@ -1,0 +1,37 @@
+<!-- Write a function that takes an object as an argument and returns a new object with 
+specific properties. For example, a function that takes an object with name, age, and 
+address properties and returns an object with only the name and age properties -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice4</title>
+</head>
+<body>
+   
+    <script>
+        let mainObject={
+            'name':'arju',
+            'age':21,
+            'address':'Jamnagar'
+        }
+        let copyObject={ 
+            'name':'abc'
+        }
+        function copyData(mainObject){   
+            let keys = Object.keys(mainObject);
+            keys.pop(); // Remove the last key
+            for (x of keys){
+                copyObject[x]= mainObject[x];
+            }
+        }
+
+        copyData(mainObject);
+        console.log(mainObject);
+        console.log(copyObject);
+
+    </script>
+</body>
+</html>

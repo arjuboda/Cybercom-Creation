@@ -1,0 +1,34 @@
+<!-- Create an array of objects to store information about multiple people or products. Write 
+code to loop through the array and display the information for each object. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice3</title>
+</head>
+<body>
+    <script>
+        let person1={
+            'name':'Person1',
+            'age':20
+        }
+        let person2={
+            'name':'Persona2',
+            'age':18
+        }
+        let arry=[person1,person2];
+        console.log(arry);
+
+        arry.forEach(element => {
+            console.log("Detail of:"+element.name);
+            for(x in element){
+                console.log(x+':'+element[x]);
+            }
+            console.log();
+        });
+        
+    </script>
+</body>
+</html>

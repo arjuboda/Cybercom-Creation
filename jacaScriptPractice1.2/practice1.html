@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice1</title>
+</head>
+<body>
+    <script>
+        const obj={
+            'name':'Arju',
+            'age':21,
+            'address':{
+                'city':'Jamnagar',
+                'State':'Gujarat'
+            }
+        }
+        //update the propert value
+        console.log('Age: '+obj.age);
+        obj.age+=1;
+        console.log('Updated Age:'+obj.age);
+
+        //replace the property value
+        obj.address.city='Rajkot';
+        console.log(obj.address.city);
+
+        //add the object property
+        obj.hobby='Dancing'
+        console.log(obj);
+
+        obj.address.houseNo=21;
+        console.log(obj.address);
+
+    </script>
+</body>
+</html>

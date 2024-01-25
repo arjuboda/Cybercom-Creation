@@ -1,0 +1,84 @@
+<!-- Create a webpage with multiple images. Use JavaScript to change the source of the 
+images based on user interaction -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Practice5</title>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0%;
+            display: flex;
+            background-color: #f0ffff;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            
+        }
+        .container{
+            box-shadow: 0px 0px 4px black;
+            display: inherit;
+            padding: 80px 50px;
+            width: 50%;
+            border-radius: 5px;
+        }
+        .subContainer{
+            display: inherit;
+            flex-direction: row;
+            align-items: center;
+        }
+        div{
+            display: inline-block;
+        }
+        img{
+            height: 500px;
+            width: 500px;
+        }
+        .btnContainer{
+            width: 50%;
+            
+        }
+        button{
+            width: 100%;
+            margin: 10px;
+            background-color: black;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subContainer">
+            <div id="imageContainer">
+            <img src="images1.jpg" alt="image1">
+        </div>
+        <div class="btnContainer">
+            <button onclick="image1()"> Image1</button>
+            <button onclick="image2()"> Image2</button>
+            <button onclick="image3()"> Image3</button>
+
+        </div>
+        </div>
+    </div>
+
+    <script>
+        var imageContainer= document.getElementById('imageContainer')
+        function image1(){
+            imageContainer.innerHTML='<img src="images1.jpg" alt="image1"><caption>Image1</caption>'
+        }
+        function image2(){
+            imageContainer.innerHTML='<img src="avenue-815297_1280.jpg" alt="image2"><caption>Image2</caption>'
+        }
+        function image3(){
+            imageContainer.innerHTML='<img src="mountains-100367_1280.jpg" alt="image2"><caption>Image3</caption>'
+        }
+    </script>
+</body>
+</html>

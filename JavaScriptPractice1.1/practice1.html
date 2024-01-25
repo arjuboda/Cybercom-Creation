@@ -1,0 +1,62 @@
+<!-- Create a webpage with a button and a paragraph. Use JavaScript to change the text of 
+the paragraph when the button is clicked. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice 1</title>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0ffff;
+            /* margin: auto; */
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            
+        }
+        .container{
+            width: 60%;
+            padding: 80px 50px;
+            background-color: rgb(196, 234, 248);
+        }
+        textarea{
+            width: 80%;
+            display: inherit;
+            /* align-items: center; */
+            margin: auto;
+            /* justify-content: center; */
+        }
+        .btn{
+            width: 30%;
+            display: inherit;
+            margin: 20px auto ;
+            background-color: blue;
+            color: aliceblue;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <textarea name="txtAreacontent" id="txtAreacontent" cols="50" rows="10" placeholder="Enter your content">text</textarea>
+            <button class="btn" onclick="changeText()">change Text</button>
+            
+    </div>
+    <script>
+        function changeText() {
+            let textareaContent = document.getElementById('txtAreacontent');
+            let newContent = prompt("Add new content of text area here:");
+            textareaContent.value =newContent;
+        }
+    </script>
+</body>
+</html>

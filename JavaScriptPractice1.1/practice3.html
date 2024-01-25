@@ -1,0 +1,76 @@
+<!-- Create a webpage with multiple buttons and paragraphs. Use JavaScript to change the 
+text of different paragraphs based on which button is clicked. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice 3</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            background-color: azure;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+
+        }
+        .container{
+            padding: 50px;
+            width: 60%;
+            height: 50%;
+            border: 5px solid rgb(0, 0, 0);
+            border-radius: 5px;
+            display: inherit;
+            align-items: center;
+            flex-direction: column;
+        }
+        textarea{
+            width: 100%;
+            margin: auto;
+            padding: 5px;
+        }
+        .divBtn{
+            display: flex;
+            justify-content: center;
+
+        }
+        .divBtn .btn{
+            padding: 10px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-weight: 500;
+            border-radius: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <textarea name="txtAreacontent" id="txtAreacontent" cols="30" rows="10" placeholder="Enter your content"></textarea>
+            <div class="divBtn">
+                <button class="btn btnUprCs" onclick="convertToUpperCase()">Convert To Uppercase</button>
+                <button class="btn btnlwrCs" onclick="convertToLowerCase()">Convert To Lowercase</button>
+                <button class="btn btnRmvSpace" onclick="removeExtraSpace()">Remove Extra Spaces</button>
+            </div>
+
+    </div>
+    <script>
+        var textarea = document.getElementById('txtAreacontent');
+        function convertToUpperCase() {
+            var convertedText = textarea.value.toUpperCase();
+            textarea.value = convertedText;
+        }
+        function convertToLowerCase(){
+            var convertedText = textarea.value.toLowerCase();
+            textarea.value = convertedText;   
+        }
+        function removeExtraSpace() {
+            var textWithNoExtraSpaces = textarea.value.replace(/\s+/g, ' ');
+            textarea.value = textWithNoExtraSpaces.trim();
+        }
+    </script>
+</body>
+</html>

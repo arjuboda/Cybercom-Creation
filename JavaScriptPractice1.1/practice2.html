@@ -1,0 +1,29 @@
+<!-- Create a webpage with a list of items. Use JavaScript to add or remove items from the 
+list. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice2</title>
+</head>
+<body>
+    <div class="container">
+        <h1>My Whish List</h1>
+        <ul id="ulWishList">
+            
+        </ul>
+
+        <button onclick="addWish()">Add Wish</button>
+    </div>
+    <script>
+        function addWish(){
+            let newItem=prompt("write hear");
+            let mywishlist=document.getElementById('ulWishList');
+            mywishlist.innerHTML+='<li>' + newItem + '</li>';
+        }
+
+    </script>
+</body>
+</html>

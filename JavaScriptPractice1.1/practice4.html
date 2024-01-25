@@ -1,0 +1,124 @@
+<!-- Create a form with input fields and a submit button. Use JavaScript to validate the form  
+data and display error messages if any of the fields are invali -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Practice4</title>
+    <style>
+         body{
+            display: flex;
+            flex-direction: column;
+            background-color: azure;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+
+        }
+        .container{
+            padding: 50px;
+            box-shadow: 0px 0px 4px black;
+            border-radius: 5px;
+            display: inherit;
+            align-items: center;
+            flex-direction: column;
+        }
+        .formRow{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .formRow label {
+            margin-right: 10px;
+            width: 100px; /* Adjust the width as needed */
+        }
+        .formRow input,textarea {
+            flex: 1;
+            padding: 5px;
+            vertical-align: top;
+        }
+        .submitBtnDiv{
+            width:40%;
+            margin: auto;
+        }
+        .submitBtn{
+            background-color: black;
+            color: white;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form  id="formExample">
+            <div class="formRow">
+               <label for="txtName" class="abc">Name:</label>
+                <input type="text" name="txtName" id="txtName">
+            </div>
+            <div class="formRow">
+                <label for="emlEmail">Email:</label>
+                <input type="email" name="emlEmail" id="emlEmail">
+            </div>
+            <div class="formRow">
+                <label for="numContact">Contact No:</label>  
+                <input type="number" name="numContact" id="numContact">  
+            </div>
+            <div class="formRow">
+                <label for="txtAreaAdrs">Address</label>
+                <textarea name="txtAreaAdrs" id="txtAreaAdrs" cols="30" rows="5"></textarea>
+            </div>
+            <div class="formRow">
+                <label for="">Hobby</label>
+                <label for="chkBxDancing"><input type="checkbox" name="chkBxDancing" id="chkBxDancing" class="checkbox">Dancing</label>
+                <label for="chkBxSinging"><input type="checkbox" name="chkBxSinging" id="chkBxSinging" class="checkbox">Singing</label>
+                <label for="chkBxOther"><input type="checkbox" name="chkBxOther" id="chkBxOther" class="checkbox">Other</label>
+            </div>
+            <div class="formRow submitBtnDiv">
+                <input type="submit" class="submitBtn" onclick="validate()">
+            </div>
+        </form>
+    </div>
+    <script>
+        function validate(){
+            let name = document.getElementById('txtName').value;
+            let email  = document.getElementById('emlEmail').value;
+            let contactNo = document.getElementById('numContact').value;
+            let address = document.getElementById('emlEmail').value;
+            let checkboxes = document.getElementsByClassName('checkbox');
+
+            if(name=='' || email=='' || contactNo=='' || address==''){
+                alert('Please fill all the fields');
+                event.preventDefault();
+            }
+            else if(name.length<2){
+                alert('Please write name properly');
+                event.preventDefault();
+            }
+            else if(contactNo.length!=10){
+                alert('Please write 10 digits');
+                event.preventDefault();
+            }
+            else {
+                var atLeastOneChecked = false;
+    
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        atLeastOneChecked = true;
+                        break;
+                    }
+                }
+                if (!atLeastOneChecked) {
+                    alert("Please check at least one checkbox");
+                    event.preventDefault();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

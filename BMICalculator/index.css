@@ -1,0 +1,83 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+}
+body{
+    background-image: url(flat-woman-diet-control-normal-weight-with-bmi-scale_88138-933.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    box-shadow: 1px 1px 40px white;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 60vh;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.formRow{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.formRow input{
+    flex: 0.5;
+    padding: 15px;
+    vertical-align: top;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.formRow input:focus{
+    background-color: blanchedalmond;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+}
+
+.resultContainer{
+    visibility: hidden;
+    margin:35px auto;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    box-shadow: 0px 0px 4px white;
+    border-radius: 5px;
+}
+
+#sbmtCalculateBmi{
+    padding: 15px 20px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+#sbmtCalculateBmi:hover{
+    /* border: 2px solid black; */
+    background-color: beige;
+    transform: scale(1.01);
+}
+.resultContainer h2{
+    text-decoration: underline;
+    padding: 5px;
+}
+#bmiResult{
+    margin:10px auto;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetAttribute Example</title>
+    <style>
+        *{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            padding: 0px;
+            margin: 0px;
+        }
+        .container{
+    
+            background-color: rgb(229, 237, 240);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form{
+            padding: 50px;
+        }
+        .formRow{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 10px;
+            
+        }
+        label{
+            width: 60%;
+            margin-right: 10px;
+            vertical-align: middle;
+            text-align: right;
+            font-weight: 600;
+        }
+        input{
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#">
+            <div class="formRow">
+                <label for="txtName">Name:</label>
+                <input type="text" name="txtName" id="txtName" style="padding:3px;">
+            </div>
+            <div class="formRow">
+                <label for="emlEmail">Email:</label>
+                <input type="email" name="emlEmail" id="emlEmail" style="padding:3px;">
+            </div>
+            <div class="formRow">
+                <label for="numContactNo">Contact Number:</label>
+                <input type="number" name="numContactNo" id="numContactNo" style="padding:3px;">
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        
+        let setAttributeValue = document.getElementById('emlEmail').setAttribute('placeholder','ex. abc@xy.xom');
+        let lableText=document.getElementsByTagName('label');
+
+        
+    </script>
+</body>
+</html>

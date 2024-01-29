@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById Example</title>
+
+</head>
+
+<body>
+
+    <h2>getElementById Example</h2>
+    
+    <p id="idElement">Hello Everyone</p>
+    <button onclick="btnChangeStyle()">Apply Styles</button>
+
+<script>
+    function btnChangeStyle(){
+        let idVariable = document.getElementById('idElement');
+        idVariable.style.backgroundColor='pink'
+        idVariable.style.fontWeight='700'
+    }
+</script>
+</body>
+
+</html>

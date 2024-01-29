@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Style Example</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 onclick="addBorder()">click on me</h1>     
+    </div>
+    <script>
+        function addBorder(){
+            document.getElementsByClassName('container')[0].style.border='3px solid red';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifying element content</title>
+</head>
+<body>
+    <div class="container">
+        <p class="firstParagraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tenetur rem exercitationem, nobis aut cupiditate sequi, cumque iure omnis, suscipit 
+            eveniet tempora vero autem fuga a. Veniam quod molestiae ex aliquid?
+        </p>
+        <button onclick="ChangeContent()">Change content</button>
+    </div>
+    <script>
+        function ChangeContent(){
+            let firstPara = document.getElementsByClassName('firstParagraph')[0];
+            firstPara.textContent ='This is the first paragraph';
+        }
+    </script>
+</body>
+</html>

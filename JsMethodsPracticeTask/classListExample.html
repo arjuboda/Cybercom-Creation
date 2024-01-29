@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList Example</title>
+    <style>
+        .container{
+            height: 50vh;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+        }
+        .textAlign-center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat dolorum eius consequuntur, provident optio quidem illum a autem pariatur cupiditate aliquid libero saepe sunt consequatur itaque aut ex in nobis.lorem
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dolor laudantium unde. Ab hic, impedit harum molestiae assumenda, dolorum rerum officiis eveniet repellat aliquam, est in laboriosam quas dolores. Impedit.
+        </p>
+        <button onclick="alignitemcenter()">click here to align text center</button>
+    </div>
+    <script>
+        function alignitemcenter(){
+            document.getElementsByClassName('container')[0].classList.add('textAlign-center');
+        }
+    </script>
+</body>
+</html>

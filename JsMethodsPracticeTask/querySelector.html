@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector Example</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainHeading">Hello </h1>
+        <p onmouseleave="changeHeading()">hover mouse pointer on me</p>
+
+    </div>
+    <script>
+        function changeHeading(){
+let heading = document.querySelector('#mainHeading');
+heading.textContent+='Everyone '
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertAdjacentHTML Example</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="headingText">Example</h1>
+        <p class="firstParagraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tenetur rem exercitationem, nobis aut cupiditate sequi, cumque iure omnis, suscipit 
+            eveniet tempora vero autem fuga a. Veniam quod molestiae ex aliquid?
+        </p>
+        <p class="second">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias maiores asperiores 
+            ipsa placeat ut! Ratione quisquam officia, <span>voluptatem rerum aspernatur dignissimos, 
+            exercitationem eos officiis </span>assumenda temporibus laboriosam. Enim, omnis odit.
+        </p>
+    </div>
+    <script>
+        let textOfSecondPara = document.getElementsByTagName('span')[0];
+        textOfSecondPara.insertAdjacentHTML('beforeend','<hr>')
+    </script>
+</body>
+</html>

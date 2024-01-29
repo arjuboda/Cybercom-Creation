@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByClassName Example</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mainHeading">Hello Everyone!</h1>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente maxime accusantium aut pariatur, ipsa ducimus itaque voluptatum doloribus similique provident libero, eius recusandae veniam, numquam beatae iusto asperiores dolores atque.</p> -->
+        <p onmouseenter="hoverEvent()" onmouseleave="mouseLeave()">Hover mouse pointer on me</p>
+    </div>
+    <script>
+        let mainDiv = document.getElementsByClassName('container')[0];
+        let heading = document.getElementsByClassName('mainHeading')[0];
+        function hoverEvent(){
+            heading.style.color='white';
+            mainDiv.style.backgroundColor='pink'
+        }
+        function mouseLeave(){
+            
+            heading.style.color='black';
+            
+            mainDiv.style.backgroundColor='white'
+        }
+    </script>
+
+</body>
+</html>

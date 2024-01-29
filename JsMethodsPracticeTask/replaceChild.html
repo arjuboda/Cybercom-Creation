@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace child Example</title>
+    <style>
+        .subcontainer{
+            width: 50px;
+            height: 50px;
+            border: 1px solid violet;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class=" subcontainer firstSubContainer">1</div>
+        <div class="subcontainer seconfSubContainer">2</div>
+        <div class="subcontainer thirdSubContainer">3</div>
+    </div>
+
+    <script>
+        let parentContainer=document.getElementsByClassName('container')[0];
+        let elementToBeReplace=document.getElementsByClassName('thirdSubContainer')[0];
+        let newElement = document.createElement('div');
+            newElement.classList.add('subcontainer','fourthContainer');
+            newElement.textContent = '4';
+        parentContainer.replaceChild(newElement,elementToBeReplace)
+    </script>
+</body>
+</html>

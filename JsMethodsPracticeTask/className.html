@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList Example</title>
+    <style>
+        .container{
+            /* height: 50vh; */
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .box-shadow{
+            text-align: center;
+            box-shadow: 0px 0px 4px red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello Everyone!</h1>
+        <button onclick="changeStyle()">click here </button>
+    </div>
+    <script>
+        function changeStyle(){
+            document.getElementsByClassName('container')[0].className='box-shadow';
+        }
+    </script>
+</body>
+</html>

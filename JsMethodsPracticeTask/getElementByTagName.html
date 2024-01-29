@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Element Methods</title>
+    <style>
+        table{
+            display: flex;
+            justify-content: center;
+            border-collapse: collapse;
+        }
+        tr,td,th{
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td id="nameFirstRow" class="name">Abc</td>
+            <td>20</td>
+            <td class="cityName">Jamnagar</td>
+        </tr>
+        <tr>
+            <td class="name">Pqr</td>
+            <td>22</td>
+            <td class="cityName">Rajkot</td>
+        </tr>
+        <tr>
+            <td class="name">Xyz</td>
+            <td>18</td>
+            <td class="cityName">Ahmedabad</td>
+        </tr>
+    </table>
+    <script>
+
+        let tableHeaders=document.getElementsByTagName('th');
+        for(i=0;i<tableHeaders.length;i++){
+            tableHeaders[i].style.backgroundColor='pink';
+            tableHeaders[i].style.fontFamily='Arial';
+
+        }
+    </script>
+</body>
+</html>

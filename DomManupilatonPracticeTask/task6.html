@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Practical Exam</title>
+    <style>
+        .new-element {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to DOM Manipulation Exam!</h1>
+        <p class="highlight">This paragraph has a highlight class.</p>
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+        </ul>
+        <div id="replaceMe">This content will be replaced.</div>
+    </div>
+    <script>
+        // Task 6: Add a new class "new-element" to the newly created paragraph.
+        document.addEventListener('DOMContentLoaded',function(){
+               let newElement= document.createElement('p');
+               if(newElement){
+                   newElement.textContent="newly created paragraph";
+                   document.body.append(newElement);
+                   newElement.classList.add('new-element');
+               }
+               else{
+                alert('element not created!');
+               }
+        });
+
+    </script>
+</body>
+</html>

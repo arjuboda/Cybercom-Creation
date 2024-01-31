@@ -1,0 +1,45 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0% 20%;
+}
+
+h1 {
+    padding: 20px 0px;
+}
+
+input,
+textarea {
+    /* background-color: pink; */
+    width: 98%;
+    padding: 3px;
+    /* margin-right: 15px; */
+    /* margin-bottom: 10px; */
+}
+
+select {
+    padding: 3px;
+}
+
+
+.btnContainer {
+    text-align: end;
+    padding-right: 5px;
+}
+
+.btn {
+    padding: 3px 15px;
+    width: 20%;
+}
+
+.red-border {
+    border: 1px solid red;
+}

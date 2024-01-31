@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Form</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add Product Form</h1>
+      <form action="#" id="productForm">
+        <table>
+          <tr>
+            <th><input type="hidden" name="hidProductId" id="hidProductId"></th>
+          </tr>
+          <tr>
+            <td>
+              <label for="txtProductTitle">Product Title</label>
+              <br /><input type="text" name="txtProductTitle" id="txtProductTitle" />
+            </td>
+            <td>
+              <label for="numPrice">Price</label> <br />
+              <input type="number" name="numPrice" id="numPrice" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="description">Description</label><br />
+              <textarea  name="description"  id="description"  cols="30"  rows="5" placeholder="Type here" > </textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="category">Category</label> <br />
+              <select name="category" id="category" >
+                <option value="">Choose...</option>
+                <option value="electronics">electronics</option>
+                <option value="women's clothing">women's clothing</option>
+                <option value="men's clothing">men's clothing</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="btnContainer"><input type="submit" class="btn" value='save' /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script src="index.js">
+      
+    </script>
+  </body>
+</html>

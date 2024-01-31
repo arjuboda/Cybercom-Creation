@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .action-buttons button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Data</h1>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Title</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <script>
+        // Retrieve data from local storage and display in table
+        document.addEventListener('DOMContentLoaded', function() {
+            let productData = JSON.parse(localStorage.getItem('productData')) || [];
+            let tableBody = document.querySelector('#productTable tbody');
+
+            productData.forEach(function(product) {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.productId}</td>
+                    <td>${product.productTitle}</td>
+                    <td>${product.productPrice}</td>
+                    <td>${product.description}</td>
+                    <td>${product.category}</td>
+                    <td class="action-buttons">
+                        <button onclick="editProduct('${product.productId}')">Edit</button>
+                        <button onclick="deleteProduct('${product.productTitle}', this)">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        });
+
+        
+   // Function to edit a product
+        function editProduct(productId) {
+            // let productData = JSON.parse(localStorage.getItem('productData')) || [];
+            
+            // let product = productData.find(product => product.productId === productId);
+
+            // if (product) {
+            //     let queryString = `?productId=${product.productId}&title=${product.productTitle}&price=${product.productPrice}&description=${product.description}&category=${product.category}`;
+            //     window.location.href = 'index.html' + queryString;
+            // }
+            let productData = JSON.parse(localStorage.getItem('productData')) || [];
+            let productIndex = productData.findIndex(product => product.productId === productId);
+
+            if (productIndex !== -1) {
+                let product = productData[productIndex];
+                let updatedProduct = {
+                    productId: product.productId,
+                    productTitle: product.productTitle,
+                    productPrice: product.productPrice,
+                    description: product.description,
+                    category: product.category
+                };
+
+                // Redirect to index.html with product data as URL parameters
+                let queryString = `?productId=${updatedProduct.productId}&title=${encodeURIComponent(updatedProduct.productTitle)}&price=${updatedProduct.productPrice}&description=${encodeURIComponent(updatedProduct.description)}&category=${encodeURIComponent(updatedProduct.category)}`;
+                window.location.href = 'index.html' + queryString;
+            }    
+        }
+    
+
+
+        function deleteProduct(productTitle, button) {
+            // Remove product from local storage
+            let productData = JSON.parse(localStorage.getItem('productData')) || [];
+            productData = productData.filter(product => product.productTitle !== productTitle);
+            localStorage.setItem('productData', JSON.stringify(productData));
+
+            // Remove row from the table
+            let row = button.closest('tr');
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+</body>
+</html>

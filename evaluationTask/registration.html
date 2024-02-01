@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container" id="registrationContainer">
+        <h1>Registration</h1>
+        <form action="#">
+            <input type="text" name="txtName" id="txtName" placeholder="Name">
+            <input type="email" name="emlEmail" id="emlEmail" placeholder="Email">
+            <input type="password" name="pswPassword" id="pswPassword" placeholder="Password">
+            <input type="password" name="pswConfirmPassword" id="pswConfirmPassword" placeholder=" Confirm Password">
+            <input type="date" name="dtBirthDate" id="dtBirthDate">
+            <select name="selCity" id="selCity">
+                <option value="">Select City</option>
+                <option value="Ahmedabad">Ahemdabad</option>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Jamnagar">Jamnagar</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+            <select name="selState" id="selState">
+                <option value="">Select State</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="MP">MP</option>
+                <option value="Maharastra">Maharastra</option>
+            </select>
+            <label for="chkBxTermsAndConditions">
+            <input type="checkbox" name="chkBxTermsAndConditions" id="chkBxTermsAndConditions" style="width: 20px;">Terms and Conditions</label>
+            <input type="button" value="Register" id="btnRegister" onclick="validateUser()">
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script> <!-- jQuery validation library*/-->
+    <script src="registration.js"></script>
+</body>
+</html>

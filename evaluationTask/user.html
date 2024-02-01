@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="leftContainer">
+            <h1>hello,admin</h1>
+            <ul>
+                <li> <a href="adminDashboard.html">Dashboard</a></li>
+                <li> <a href="user.html">Users</a></li>
+                <li><a href="LoginSession.html">Login session</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="rightContainer">
+
+            <h2>Add User</h2>
+            <form action="">
+                <div class="userContainer">
+                    <input type="text" name="txtNewUserName" id="txtNewUserName" class="addUser" placeholder="Name">
+                    <input type="email" name="emlNewUserEmail" id="emlNewUserEmail" class="addUser" placeholder="Email">
+                    <input type="password" name="pswNewUserPassword" id="pswNewUserPassword" class="addUser" placeholder="Password">
+                    <input type="date" name="dtNewUserBirthDate" id="dtNewUserBirthDate" class="addUser" placeholder="Birthdate">
+                </div>
+                <div class="userContainer" id="addNewUser">
+                    <input type="button" value="Add User" onclick="addNewUser()">
+    
+                </div>
+            </form>
+           
+
+            <h2>User List</h2>
+            <table id="UserData">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>BirthDate</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        
+            <script>
+                // Retrieve data from local storage and display in table
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Function to generate unique ID
+                    
+                    let userData = JSON.parse(localStorage.getItem('userData')) || [];
+                    let tableBody = document.querySelector('#UserData tbody');
+        
+                    
+                        let row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${userData.userName}</td>
+                            <td>${userData.userEmail}</td>
+                            <td>${userData.userPassword}</td>
+                            <td>${userData.userBirthDate}</td>
+                            <td>${userData.userAge}</td>
+                            <td class="action-buttons">
+                                <button onclick="editUser('${userData.userID}')">Edit</button>
+                                <button onclick="deleteUser('${userData.userName}', this)">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+
+                        function generateId() {
+                        return '_' + Math.random().toString(36).substr(2, 9);
+                    }
+                    function addNewUser(){
+                        let newUserName=document.getElementById('txtNewUserName'); 
+                        let newUserEmail = document.getElementById('emlNewUserEmail');
+                        let newUserPassword = document.getElementById('pswNewUserPassword');
+                        let dtNewUserBirthDate = document.getElementById('dtNewUserBirthDate');
+                        alert();
+                        let userId = generateId();
+                        let newData = {
+                            userId: userId,
+                            userName: $('#txtNewUserName').val(),
+                            userEmail: $('#emlNewUserEmail').val(),
+                            userPassword: $('#pswNewUserPassword').val(),
+                            userBirthDate: $('#dtNewUserBirthDate').val()
+                        };
+                        localStorage.setItem('userData', JSON.stringify(newData));
+                    }
+                    });
+                
+        
+                
+                // function editUser(userId) {
+                   
+                //     let userData = JSON.parse(localStorage.getItem('userData')) || [];
+                //     let userID = userData.findIndex(user => user.userID === userID);
+        
+                //     if (userID !== -1) {
+                //         let user = userData[userID];
+                //         let updateUser = {
+                //             userID: user.userID,
+                //             userName: user.userName,
+                //             userEmail: user.userEmail,
+                //             userPassword: user.userPassword
+                //         };
+        
+                //     }    
+                // }
+        
+        
+                // function deleteUser(userName, button) {
+                //     let UserData = JSON.parse(localStorage.getItem('userData')) || [];
+                //     userData = userName.filter(user => user.userName !== userName);
+                //     localStorage.setItem('userData', JSON.stringify(userData));
+        
+                //     // Remove row from the table
+                //     let row = button.closest('tr');
+                //     row.parentNode.removeChild(row);
+                // }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

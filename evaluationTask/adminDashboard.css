@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftContainer {
+    width: 20%;
+    background-color: rgb(252, 135, 57);
+    padding: 20px;
+}
+
+ul {
+    margin-top: 50px;
+}
+
+li {
+    list-style: none;
+    margin: 20px 0px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.rightContainer {
+    width: 80%;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.dashboardHeading {
+    margin: 30px;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+    margin: auto;
+}
+
+.subUserContainer {
+    padding: 20px;
+    width: 30%;
+    height: 200px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.firstSubUserContainer {
+    background-color: bisque;
+}
+
+.secondSubUserContainer {
+    background-color: rgb(255, 163, 255);
+}
+
+.thirdSubUserContainer {
+    background-color: pink;
+}
+
+.newclass {
+    text-align: center;
+    margin: 30px auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.action-buttons button {
+    margin-right: 5px;
+}
+
+h2 {
+    margin: 10px 0px;
+}
+
+.addUser {
+    width: 24%;
+}
+
+input {
+    padding: 5px;
+}
+
+#addNewUser {
+    display: flex;
+    justify-content: end;
+    margin: 10px auto;
+}

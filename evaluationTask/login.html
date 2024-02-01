@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Login
+        </h1>
+        <form action="#">
+            <input type="email" name="emlEmail" id="emlEmail" placeholder="Email" required>
+            <input type="password" name="pswPassword" id="pswPassword" placeholder="Password">
+            <input type="button" value="Login" id="btnLogin" onclick="redirectToDashboard()">
+            <p>OR</p>
+            <input type="button" value="Register Now" id="btnRegisterNow" onclick="openRegistrationPage()">
+        </form>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+    <style>
+        #heading{
+            text-align: center;
+            font-size: 20px;
+        }
+        #divBirthdayWish{
+            text-align: center;
+            margin: 30px auto;
+            font-weight: 900;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-style: oblique;
+            color: rgb(255, 0, 89);
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="leftContainer">
+            <h1>hello, <span id="currentUserName"></span></h1>
+            <ul>
+                <li> <a href="#">Dashboard</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="rightContainer">
+            <h1 id='heading'>welcome to Cybercom Creation</h1>
+            <div  id="divBirthdayWish" > </div>
+        </div>
+    </div>
+    <script>
+        function isBirthday() {
+            
+        let currentUserBirthDate = sessionStorage.getItem('currentUserBirthDate');
+            const birthday = sessionStorage.getItem('birthday'); // Assuming birthday is stored as "YYYY-MM-DD"
+            if (!currentUserBirthDate) {
+                console.log("Birthday not set in sessionStorage");
+                return false; // Birthday not set
+            }
+
+            const today = new Date();
+            const todayMonth = today.getMonth() + 1; // Months are zero-based
+            const todayDay = today.getDate();
+            
+            const birthdateParts = currentUserBirthDate.split('-');
+            const birthMonth = parseInt(birthdateParts[1]);
+            const birthDay = parseInt(birthdateParts[2]);
+
+            return (todayMonth === birthMonth && todayDay === birthDay);
+        }
+
+        if (isBirthday()) {
+            document.getElementById('divBirthdayWish').textContent="Happy Birthday !"
+        }
+        let currentUserName = sessionStorage.getItem('currentUserName');
+        
+        document.getElementById('currentUserName').textContent=currentUserName;
+        document.getElementById('ageLessEighteen');
+        let userdata = JSON.parse(localStorage.getItem(''))
+
+
+    </script>
+</body>
+</html>

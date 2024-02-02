@@ -7,12 +7,23 @@
 
         userData.forEach(user => {
             let row = document.createElement('tr');
+            let userAge= calculateAge(user.userBirthDate);
+            function calculateAge(birthdate){
+                var today = new Date();
+                var birthDate = new Date(birthdate);
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var month = today.getMonth() - birthDate.getMonth();
+                if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
             row.innerHTML = `
                 <td>${user.userName}</td>
                 <td>${user.userEmail}</td>
                 <td>${user.userPassword}</td>
                 <td>${user.userBirthDate}</td>
-                <td>-</td>
+                <td>${userAge}</td>
                 <td class="action-buttons">
                     <button onclick="editUser('${user.userID}')">Edit</button>
                     <button onclick="deleteUser('${user.userName}', this)">Delete</button>
@@ -52,21 +63,22 @@
         // displayLocalstorageData();
 
     }
-    function deleteUser(userName, button) {
-        let UserData = JSON.parse(localStorage.getItem('userData')) || [];
-        let userData = UserData.filter(user => user.userName !== userName);
-        localStorage.setItem('userData', JSON.stringify(userData));
-        
-        // Remove row from the table
-        let row = button.closest('tr');
-        row.parentNode.removeChild(row);
-    }
+    displayLocalstorageData();
+    
     $('#btnAddUser').click(function(){
         addNewUser();
     });
-    displayLocalstorageData();
-
+    
 });
+function deleteUser(userName, button) {
+    let UserData = JSON.parse(localStorage.getItem('userData')) || [];
+    let userData = UserData.filter(user => user.userName !== userName);
+    localStorage.setItem('userData', JSON.stringify(userData));
+    
+    // Remove row from the table
+    let row = button.closest('tr');
+    row.parentNode.removeChild(row);
+}
                    
 
 

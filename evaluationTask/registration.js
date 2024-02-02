@@ -46,20 +46,6 @@ function displayError() {
 function generateId() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
-
-// function addUserDataToLocalStorage() {
-//     let userData = JSON.parse(localStorage.getItem('userData')) || [];
-//     let userId = generateId();
-//     let newData = {
-//         userId: userId,
-//         userName: $('#txtName').val(),
-//         userEmail: $('#emlEmail').val(),
-//         userPassword: $('#pswPassword').val(),
-//         userBirthDate: $('#dtBirthDate').val()
-//     };
-//     userData.push(newData);
-//     localStorage.setItem('userData', JSON.stringify(userData));
-// }
 function addUserDataToLocalStorage() {
     // let userData = JSON.parse(localStorage.getItem('userData')) || [];
     let userData = JSON.parse(localStorage.getItem('userData'));
@@ -77,7 +63,6 @@ function addUserDataToLocalStorage() {
     userData.push(newData);
     localStorage.setItem('userData', JSON.stringify(userData));
 }
-
 
 function validateUser() {
 
@@ -101,3 +86,11 @@ $('.container').on('input select textarea', '.red-border', function () {
     }
 });
 
+document.getElementById("txtName").addEventListener("blur", function () {
+    if (userName.value == 'admin') {
+        registartionBtn.style.visibility = 'hidden';
+    }
+    else {
+        registartionBtn.style.visibility = 'visible'
+    }
+});

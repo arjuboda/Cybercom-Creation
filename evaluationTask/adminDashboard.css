@@ -91,6 +91,10 @@ th {
     background-color: #f2f2f2;
 }
 
+td {
+    font-weight: 400;
+}
+
 .action-buttons button {
     margin-right: 5px;
 }

@@ -24,13 +24,6 @@ function displayError() {
         $('#pswPassword').addClass('red-border');
         error = true;
     }
-    // if (userPassword.value === userConfirmPassword.value) {
-    //     $('#pswPassword').addClass('red-border');
-    //     $('#pswConfirmPassword').addClass('red-border');
-    //     $('#pswConfirmPassword').after('<div class="error-message">Password and Confirm password must be same</div>');
-
-    //     error = true;
-    // }
     if (userBirthDate.value == null) {
         $('#dtBirthDate').addClass('red-border');
         error = true;
@@ -50,37 +43,49 @@ function displayError() {
     }
     return error;
 }
-// Function to generate unique ID
 function generateId() {
     return '_' + Math.random().toString(36).substr(2, 9);
 }
 
+// function addUserDataToLocalStorage() {
+//     let userData = JSON.parse(localStorage.getItem('userData')) || [];
+//     let userId = generateId();
+//     let newData = {
+//         userId: userId,
+//         userName: $('#txtName').val(),
+//         userEmail: $('#emlEmail').val(),
+//         userPassword: $('#pswPassword').val(),
+//         userBirthDate: $('#dtBirthDate').val()
+//     };
+//     userData.push(newData);
+//     localStorage.setItem('userData', JSON.stringify(userData));
+// }
 function addUserDataToLocalStorage() {
-    let existData = [];
+    // let userData = JSON.parse(localStorage.getItem('userData')) || [];
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    if (!Array.isArray(userData)) {
+        userData = []; // Initialize as empty array if not an array
+    }
     let userId = generateId();
     let newData = {
         userId: userId,
         userName: $('#txtName').val(),
         userEmail: $('#emlEmail').val(),
         userPassword: $('#pswPassword').val(),
-        userBirthDate: $('#dtBirthDate').val(),
-        // UserCity: $('#selCity').val(),
-        // UserState: $('#selState').val()
+        userBirthDate: $('#dtBirthDate').val()
     };
-    localStorage.setItem('userData', JSON.stringify(newData));
+    userData.push(newData);
+    localStorage.setItem('userData', JSON.stringify(userData));
 }
 
+
 function validateUser() {
-
-
-
 
     if (displayError()) {
         alert('check the errors!');
     } else {
         if (userName.value == 'admin') {
             registartionBtn.style.visibility = 'hidden';
-            // window.location.href = 'login.html';
         }
         else {
             addUserDataToLocalStorage();
@@ -89,9 +94,6 @@ function validateUser() {
         window.open('login.html');
     }
 }
-
-
-
 // Event listener to remove red border on input
 $('.container').on('input select textarea', '.red-border', function () {
     if ($(this).val() !== '') {

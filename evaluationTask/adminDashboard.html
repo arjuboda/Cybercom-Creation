@@ -21,18 +21,22 @@
             <h1 class="dashboardHeading">Dashboard</h1>
             <div class="userContainer">
                 <div class="subUserContainer firstSubUserContainer">
-                    <p>User <gt/>18 Years <br><br>12 User</p>
+                    <p>User &lt; 18 Years <span id="ageLessEighteen"></span> User</p>
                 </div>
                 <div class="subUserContainer secondSubUserContainer">
-                    <p>User <gt/>18 Years <br><br>18 Users</p>
+                    <p>18-50 Years <span id="ageBetweenEighteenToFifty"></span> User</p>
                 </div>
                 <div class="subUserContainer thirdSubUserContainer">
-                    <p>User <gt/>18 Years </p>
+                    <p>Users &gt; 50 Years <span id="ageGreaterFifty"></span> User</p>
                 </div>
 
             </div>
             <div  class="newclass" > Today is 'ABC' birthday</div>
         </div>
     </div>
+    <script>
+        document.getElementById('ageLessEighteen');
+        let userdata = JSON.parse(localStorage.getItem(''))
+    </script>
 </body>
 </html>

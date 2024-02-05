@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Session</title>
+    <link rel="stylesheet" href="adminDashboard.css">
+    <style>
+        table {
+            width: 80%;
+            margin:0% 10%;
+        }
+
+        th{
+            width: 33%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="leftContainer">
+            <h1>hello, admin</h1>
+            <ul>
+                <li> <a href="#">Dashboard</a></li>
+                <li> <a href="user.html">Users</a></li>
+                <li><a href="LoginSession.html">Login session</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="rightContainer">
+            <h2>User Session Logs</h2>
+            <table id="UserData">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Login Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+       let userData = JSON.parse(localStorage.getItem('userData'));
+        console.log(userData);
+
+        // Populate the table with all user data
+        let tableBody = document.querySelector('tbody');
+
+        userData.forEach(user => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.userName}</td>
+                <td>${user.userEmail}</td>
+                <td>${user.userLoginTime}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>

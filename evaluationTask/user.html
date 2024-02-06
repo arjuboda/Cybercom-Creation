@@ -49,6 +49,22 @@
                     
                 </tbody>
             </table>
+            <div id="editUserPopup" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeEditUserPopup()">&times;</span>
+                    <h2>Edit User</h2>
+                    <label for="txtEditUserName">User Name:</label>
+                    <input type="text" id="txtEditUserName">
+                    <label for="emlEditUserEmail">Email:</label>
+                    <input type="email" id="emlEditUserEmail">
+                    <label for="pswEditUserPassword">Password:</label>
+                    <input type="password" id="pswEditUserPassword">
+                    <!-- Add more fields as needed -->
+                    <button onclick="saveEditedUser()">OK</button>
+                    <button onclick="closeEditUserPopup()">Cancel</button>
+                </div>
+            </div>
+            
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script> <!-- jQuery validation library*/-->
             <script src="user.js"> 
             </script>

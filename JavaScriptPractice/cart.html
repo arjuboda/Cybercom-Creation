@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0% 15%
+        }
+        h1{
+            margin-top: 20px;
+        }
+        .subcontainer{
+            font-size:20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px black;
+            padding: 20px 50px;
+        }
+        .itemDetail{
+            margin-top: 5px;
+        }
+        #orderId{
+            font-weight: 600;
+            font-size: 21px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+        #totalPrice{
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <h1>Order Details</h1>
+        <div class="subcontainer">
+            <div class="itemDetail" id="orderId"></div>
+            <div id="firstItemDetails" class="itemDetail"></div>
+            <div id="secondItemDetails" class="itemDetail"></div>
+            <div id="thirdItemDetails" class="itemDetail"></div>
+            <div id="totalPrice" class="itemDetail"></div>
+        </div>     
+    </div>
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve item details from local storage
+            let Item = JSON.parse(localStorage.getItem('Item'));
+            
+            // Calculate total price for each item
+            let firstItemTotal = Item[1].count * Item[1].price;
+            let secondItemTotal =  Item[2].count * Item[2].price;
+            let thirdItemTotal =  Item[3].count * Item[3].price;
+
+             //check all count are 0 or not
+            if (Item[1].count === 0 && Item[2].count === 0 && Item[3].count === 0) {
+                alert("All item counts are zero!");
+                location.href='index.html'
+            } else {
+                document.getElementById('orderId').innerHTML=`Order Id : ${Item[0]}`
+                if (Item[1].count > 0) {
+                    document.getElementById('firstItemDetails').innerHTML = `${Item[1].name} : $${Item[1].price} x ${Item[1].count} = $${firstItemTotal}`;
+                }
+                if (Item[2].count> 0) {
+                    document.getElementById('secondItemDetails').innerHTML = `${Item[2].name} : $${Item[2].price} x ${Item[2].count} = $${secondItemTotal}`;
+                }
+                if (Item[3].count > 0) {
+                    document.getElementById('thirdItemDetails').innerHTML = `${Item[3].name} : $${Item[3].price} x ${Item[3].count} = $${thirdItemTotal}`;
+                }
+
+                // Calculate and display total Price
+                let totalPrice = firstItemTotal + secondItemTotal + thirdItemTotal;
+                document.getElementById('totalPrice').innerHTML = `Total Price: $${totalPrice}`;
+            }
+        });
+
+    </script>
+</body>
+</html>

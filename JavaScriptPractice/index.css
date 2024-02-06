@@ -1,0 +1,88 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 15%
+}
+
+.subcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    flex: 1;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;
+    /* width: 500px; */
+    /* height: 50vh; */
+    flex-direction: column;
+    padding: 20px;
+}
+
+.subcontainer img {
+    width: 200px;
+    height: 200px;
+}
+
+.subcontainer .itemDetail {
+    text-align: center;
+    /* color: black; */
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subcontainer .itemDetail .itemPrice {
+    color: rgb(71, 71, 71);
+}
+
+.subcontainer .numberOfItemsContainer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.subcontainer .numberOfItemsContainer button {
+    padding: 10px 15px;
+    font-size: 20px;
+    font: 900;
+    border-radius: 50%;
+    border: 1px solid rgb(155, 155, 155);
+}
+
+.subcontainer .numberOfItemsContainer button:hover {
+    border: 2px solid black;
+}
+
+.subcontainer .numberOfItemsContainer .numOfItem {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline;
+}
+
+.btnContainer {
+    text-align: center;
+}
+
+.btnContainer input[type="submit"] {
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    background-color: black;
+    border-radius: 3px;
+    width: 20%;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.btnContainer input[type="submit"]:hover {
+    box-shadow: 0px 0px 5px black;
+    color: black;
+    background-color: white;
+}

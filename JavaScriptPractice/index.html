@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="subcontainer first_subcontainer">
+            <img src="assets/images/download.jpeg" alt="">
+            <div class="itemDetail">
+                <p class="itemName">Strandmond </p>
+                <p class="itemPrice">$295</p>
+            </div>
+            <div class="numberOfItemsContainer">
+                <button class="btnDecrementvalue" onclick="decreaseValue('firstItem')"> - </button>
+                <div class="numOfItem" id="firstItem">0</div>
+                <button class="btnIncrementvalue" onclick="increaseValue('firstItem')">+</button>
+            </div>
+        </div>
+        <div class="subcontainer second_subcontainer">
+            <img src="assets/images/sofa-chair.jpg" alt="">
+            <div class="itemDetail">
+                <p class="itemName">Nockeby </p>
+                <p class="itemPrice">$299</p>
+            </div>
+            <div class="numberOfItemsContainer">
+                <button class="btnDecrementvalue" onclick="decreaseValue('secondItem')"> - </button>
+                <div class="numOfItem" id="secondItem">0</div>
+                <button class="btnIncrementvalue" onclick="increaseValue('secondItem')">+</button>
+            </div>
+        </div>
+        <div class="subcontainer third_subcontainer">
+            <img src="assets/images/strandmod.jpg" alt="">
+            <div class="itemDetail">
+                <p class="itemName">Mellby </p>
+                <p class="itemPrice">$749</p>
+            </div>
+            <div class="numberOfItemsContainer">
+                <button class="btnDecrementvalue" onclick="decreaseValue('thirdItem')"> - </button>
+                <div class="numOfItem" id="thirdItem">0</div>
+                <button class="btnIncrementvalue" onclick="increaseValue('thirdItem')">+</button>
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="btnContainer">
+            <input type="submit" value="Buy" id="btnBuy">
+        </div>
+    <script src="index.js"></script>
+</body>
+</html>

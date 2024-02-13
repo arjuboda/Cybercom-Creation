@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input[type="date"],
+        input[type="time"],
+        input[type="text"] {
+            width: calc(50% - 5px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Doctor Dashboard</h1>
+        <label for="doctorId">Doctor ID:</label>
+        <p id="doctorId">Doctor ID Placeholder</p>
+
+        <label for="doctorName">Doctor Name:</label>
+        <p id="doctorName">Doctor Name Placeholder</p>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <div id="timeSlotsContainer">
+            <label for="timeSlot">Time Slot:</label>
+            <input type="text" id="timeSlot" name="timeSlot" placeholder="HH:MM - HH:MM">
+        </div>
+
+        <button type="button" onclick="addTimeSlot()">Add Time Slot</button>
+        <br><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        // Retrieve doctor information from local storage
+        let currentDoctor = JSON.parse(localStorage.getItem('currentDoctor'));
+        let appointmentDetails=JSON.parse(localStorage.getItem('appointmentDetails'))||[];
+        
+        window.onload = function() {
+            // Populate doctor ID and name fields
+            document.getElementById('doctorId').textContent = currentDoctor.id || 'Unknown';
+            document.getElementById('doctorName').textContent = currentDoctor.name || 'Unknown';
+        };
+
+        function addTimeSlot() {
+            let container = document.getElementById('timeSlotsContainer');
+            let newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'timeSlot';
+            newInput.placeholder = 'HH:MM - HH:MM';
+            container.appendChild(newInput);
+            container.appendChild(document.createElement('br'));
+        }
+
+        function submitForm() {
+            // Get form values
+            let date = document.getElementById('date').value;
+            let timeSlots = [];
+
+            // Loop through all time slot inputs and collect it's values
+            let timeSlotInputs = document.querySelectorAll('input[name="timeSlot"]');
+            timeSlotInputs.forEach(function(input) {
+                timeSlots.push(input.value);
+            });
+
+            let currentAppointmentDetails = {
+                doctorId:currentDoctor.id,
+                doctorName:currentDoctor.name,
+                date: date,
+                timeSlots: timeSlots
+            };
+            appointmentDetails.push(currentAppointmentDetails);
+            localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
+
+        }
+    </script>
+</body>
+</html>

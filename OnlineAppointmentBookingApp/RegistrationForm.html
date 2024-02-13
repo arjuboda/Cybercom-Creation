@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="src/registration.css">
+</head>
+<body>
+    <div class="container" id="registrationContainer">
+        <div class="subcontainer">
+            <div class="tabs">
+                <button class="tablink" onclick="openTab('patient')">Patient</button>
+                <button class="tablink" onclick="openTab('doctor')">Doctor</button>
+            </div>
+            <div id="patient" class="tabcontent">
+                <div class="patientContainer">
+                    <h1>Patient Registration</h1>
+                    <form action="#">
+                        <input type="text" name="txtPatientName" id="txtPatientName" placeholder="Name">
+                        <input type="email" name="emlPatientEmail" id="emlPatientEmail" placeholder="Email">
+                        <input type="password" name="pswPatientPassword" id="pswPatientPassword" placeholder="Password">
+                        <input type="text" name="txtPatientCity" id="txtPatientCity" placeholder="City">
+                        <input type="button" value="Register" id="btnPatientRegister" onclick="validatePatient()">
+                    </form>
+                </div>
+            </div>
+            <div id="doctor" class="tabcontent" style="display:none;">
+                <div class="doctorContainer">
+                    <h1>Doctor Registration</h1>
+                    <form action="#">
+                        <input type="text" name="txtDoctorName" id="txtDoctorName" placeholder="Name">
+                        <input type="email" name="emlDoctorEmail" id="emlDoctorEmail" placeholder="Email">
+                        <input type="password" name="pswDoctorPassword" id="pswDoctorPassword" placeholder="Password">
+                        <input type="text" name="txtDoctorCity" id="txtDoctorCity" placeholder="City">
+                        <input type="button" value="Register" id="btnRegisterDoctor" onclick="validateDoctor()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jQuery validation library -->
+    <script src="src/registation.js"></script>
+   
+</body>
+</html>

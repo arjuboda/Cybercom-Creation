@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(src/images/istockphoto-1165997279-612x612.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+
+        }
+        .container{
+            width: 100%;
+            height: 99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .subContainer  {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .containerRow{
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 10px 20px 30px 20px;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: inline-block;
+            width:30%;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        input[type="date"],
+        input[type="time"],
+        input[type="text"] {
+            width: calc(60% - 5px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size:16px;
+            font-weight: 500;
+        }
+        button {
+            display: block;
+            width: 50%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin:10px auto;
+            font-size: 16px;
+
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #btnAddTimeSlot{
+            margin-bottom: 20px;
+            margin-top:10px;
+            background-color: rgba(0, 128, 0, 0.79);
+        }
+        #btnAddTimeSlot:hover{
+            background-color: rgb(1, 103, 1);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subContainer">
+            <h1>Set Your Appointments</h1>
+            <div class="containerRow">
+                <label for="doctorId">Doctor ID:</label>
+                <input type="text" name="doctorId" id="doctorId" readonly>
+                <!-- <p id="doctorId">Doctor ID Placeholder</p> -->
+            </div>
+            <div class="containerRow">
+                <label for="doctorName">Doctor Name:</label>
+                <input type="text" name="doctorName" id="doctorName"readonly>
+            </div>
+            <div class="containerRow">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+    
+            <div id="timeSlotsContainer" class="containerRow">
+                <label for="timeSlot">Time Slot:</label>
+                <input type="text" id="timeSlot" name="timeSlot" placeholder="HH:MM - HH:MM AM/PM"><br>
+            </div>
+    
+            <button type="button" onclick="addTimeSlot()" id="btnAddTimeSlot">Add Time Slot</button>
+            
+            <button type="button" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve doctor information from local storage
+        let currentDoctor = JSON.parse(localStorage.getItem('currentDoctor'));
+        let appointmentDetails=JSON.parse(localStorage.getItem('appointmentDetails'))||[];
+        
+        window.onload = function() {
+            // Populate doctor ID and name fields
+            document.getElementById('doctorId').value = currentDoctor.id || 'Unknown';
+            document.getElementById('doctorName').value = currentDoctor.name || 'Unknown';
+        };
+
+        function addTimeSlot() {
+            let container = document.getElementById('timeSlotsContainer');
+            let newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'timeSlot';
+            newInput.id = 'timeSlot';
+            newInput.placeholder = 'HH:MM - HH:MM AM/PM';
+            container.appendChild(newInput);
+            container.appendChild(document.createElement('br'));
+        }
+
+        function submitForm() {
+            // Get form values
+            let date = document.getElementById('date').value;
+            let timeSlots = [];
+
+            // Loop through all time slot inputs and collect it's values
+            let timeSlotInputs = document.querySelectorAll('input[name="timeSlot"]');
+            timeSlotInputs.forEach(function(input) {
+                timeSlots.push(input.value);
+            });
+
+            let currentAppointmentDetails = {
+                doctorId:currentDoctor.id,
+                doctorName:currentDoctor.name,
+                date: date,
+                timeSlots: timeSlots
+            };
+            appointmentDetails.push(currentAppointmentDetails);
+            localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
+
+            location.href='doctorDashboard.html'
+
+        }
+    </script>
+</body>
+</html>

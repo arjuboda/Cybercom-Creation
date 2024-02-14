@@ -3,114 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Patient Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url(src/images/istockphoto-1165997279-612x612.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+
         }
-        .container {
-            max-width: 600px;
+        .container{
+            height: 99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .subContainer {
+            max-width: 800px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
+            border-radius: 10px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.922);
             text-align: center;
         }
-        form {
-            margin-top: 20px;
+        p{
+            font-size: 30px;
+            font-weight: 600;
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
+        .links {
+            margin-bottom: 20px;
         }
-        select,
-        input[type="submit"] {
-            width: calc(100% - 10px);
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        .links a {
             box-sizing: border-box;
-        }
-        .confirmation {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
+            width: 100%;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .links a:hover {
+            background-color: #0056b3;
+        }
+
+        .welcome-message {
+            margin-top: 50px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .animation {
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>User Dashboard</h1>
-        <form id="appointmentForm" onsubmit="confirmAppointment(event)">
-            <label for="doctor">Select Doctor:</label>
-            <select id="doctor" name="doctor">
-                <!-- Doctor options will be dynamically populated here -->
-            </select>
-
-            <label for="timeSlot">Select Time Slot:</label>
-            <select id="timeSlot" name="timeSlot">
-                <!-- Time slot options will be dynamically populated here -->
-            </select>
-
-            <input type="submit" value="Book Appointment">
-        </form>
-
-        <div id="confirmation" class="confirmation" style="display: none;">
-            <h2>Appointment Confirmed</h2>
-            <p id="confirmationDetails"></p>
+        <div class="subContainer">
+            <div class="welcome-message animation">
+                <p>Welcome, <span id="patientName"></span></p>
+                <!-- Add any additional content or animation here -->
+            </div>
+            <div class="links">
+                <a href="patientNewRquestForm.html">Book Next Appointment</a>
+                <a href="patientRequestedapoinment.html">Request Appointment</a>
+                <a href="loginForm.html" id="logOut">Logout</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Retrieve appointment data from localStorage
-        let appointments = JSON.parse(localStorage.getItem('appointmentDetails'));
-        console.log(appointments);
-        // Populate doctor and time slot options
-        let doctorSelect = document.getElementById('doctor');
-        let timeSlotSelect = document.getElementById('timeSlot');
-
-        appointments.forEach(appointment => {
-            let option = document.createElement('option');
-            option.text = `${appointment.doctorName} - ${appointment.date}`;
-            option.value = JSON.stringify(appointment);
-            doctorSelect.add(option);
-        });
-
-        // Function to update time slot options based on selected doctor
-        function updateSlots() {
-            let selectedDoctor = JSON.parse(doctorSelect.value);
-            timeSlotSelect.innerHTML = '';
-
-            selectedDoctor.timeSlots.forEach(slot => {
-                let option = document.createElement('option');
-                option.text = slot;
-                timeSlotSelect.add(option);
-            });
-        }
-
-        // Event listener to update time slots when doctor is selected
-        doctorSelect.addEventListener('change', updateSlots);
-
-        // Function to handle form submission and confirmation
-        function confirmAppointment(event) {
-            event.preventDefault();
-            let selectedDoctor = JSON.parse(doctorSelect.value);
-            let selectedTimeSlot = timeSlotSelect.value;
-
-            let confirmationDetails = document.getElementById('confirmationDetails');
-            confirmationDetails.textContent = `Doctor Name: ${selectedDoctor.doctorName}\nDate: ${selectedDoctor.date}\nTime Slot: ${selectedTimeSlot}`;
+        let currentPatient = JSON.parse(localStorage.getItem('currentPatient'));
+        document.getElementById('patientName').textContent = currentPatient.name;
+        let logoutbtn=document.getElementById('logOut');
+        logoutbtn.addEventListener('click',function(){
             
-            // Display confirmation
-            document.getElementById('confirmation').style.display = 'block';
-        }
+            localStorage.removeItem('currentPatient');
+        })
     </script>
 </body>
 </html>

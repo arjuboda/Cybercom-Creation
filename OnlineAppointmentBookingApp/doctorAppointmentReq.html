@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(src/images/istockphoto-1165997279-612x612.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+        .container{
+            height: 99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .subContainer {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            display: block;
+            width: 30%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: auto;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subContainer">
+            <h2>Appointment Requests</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Time Slot</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentRequestsBody">
+                    <!-- Table rows will be dynamically added here -->
+                </tbody>
+            </table>
+            <button id="goToDashboard">Back to Dashboard</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Retrieve currentUser and appointmentRequests from localStorage
+        let currentDoctor = JSON.parse(localStorage.getItem('currentDoctor'));
+        let appointmentRequest = JSON.parse(localStorage.getItem('appointmentRequest'));
+
+        // Function to display appointment requests matching current user ID
+        function displayAppointmentRequests() {
+            let appointmentRequestsBody = document.getElementById('appointmentRequestsBody');
+            appointmentRequestsBody.innerHTML = ''; // Clear previous content
+
+            appointmentRequest.forEach(request => {
+                if (request.doctor.doctorId === currentDoctor.id) {
+                    let row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${request.patientName}</td>
+                        <td>${request.doctor.date}</td>
+                        <td>${request.timeSlots}</td>
+                        <td>${request.status}</td>
+                    `;
+                    appointmentRequestsBody.appendChild(row);
+                }
+            });
+        }
+
+        // Display appointment requests on page load
+        displayAppointmentRequests();
+        let btngoToDashboard=document.getElementById('goToDashboard');
+        btngoToDashboard.addEventListener('click',function(){
+            location.href='patientDashboard.html';
+        })
+    </script>
+</body>
+</html>

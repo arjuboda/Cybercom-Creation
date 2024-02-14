@@ -2,13 +2,15 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* rgba(195, 221, 254, 255); */
+}
+
+body {
+    background-image: url('images/istockphoto-1165997279-612x612.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
-    border: 2px solid red;
-    background-color: rgba(255, 255, 255, 1);
     display: flex;
     height: 100vh;
 }
@@ -17,47 +19,67 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    /* align-content: center; */
     justify-content: center;
     text-align: center;
 }
 
-.rightPart {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    /* align-content: center; */
-    justify-content: center;
-    text-align: center;
+.leftPart .formContainer {
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgb(0, 0, 0);
+    margin: 0 auto;
 }
 
 .leftPart h1 {
     font-size: 40px;
-    color: rgb(0, 0, 0);
-    margin: 20px auto;
+    color: rgba(15, 1, 65, 0.922);
+    margin: 30px auto;
 }
 
 .leftPart .btnContainer {
-    padding: 10px;
+    padding: 10px 50px;
+    width: 100%;
+    margin-top: 30px;
+
 }
 
 .leftPart .btnContainer .btn {
     font-size: 16px;
     padding: 10px;
-    background-color: rgb(195, 221, 254);
+    color: azure;
+    background-color: #20b0db;
     border: none;
     border-radius: 5px;
     font-weight: 600;
-    box-shadow: 0px 0px 4px black;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .leftPart .btnContainer .btnDocLogin {
     margin-right: 10px;
 }
 
-@media screen and (max-width: 768px) {
 
-    /* Adjust layout for screens smaller than 768px width */
+.rightPart {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+    border-radius: 40%;
+    height: 100vh;
+    max-width: 90vh;
+}
+
+@media screen and (max-width: 768px) {
+    * {
+        box-sizing: border-box;
+    }
+
     .container {
         flex-direction: column;
         height: auto;
@@ -66,5 +88,17 @@
     .leftPart,
     .rightPart {
         width: 100%;
+        margin-top: 50px;
+
     }
+
+    .formContainer {
+        width: 90%;
+    }
+
+    img {
+        width: 100%;
+    }
+
+
 }

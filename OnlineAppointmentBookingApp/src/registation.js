@@ -37,6 +37,12 @@ function patientValidation() {
         error = true;
     }
 
+    let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!pattern.test(patientEmail.value)) {
+        $('#emlPatientEmail').addClass('red-border');
+        error = true;
+        patientEmail.value = '';
+    }
     if (patientPassword.value === '') {
         $('#pswPatientPassword').addClass('red-border');
         error = true;
@@ -77,10 +83,19 @@ function doctorValidation() {
         $('#emlDoctorEmail').addClass('red-border');
         error = true;
     }
-    // if (doctorPassword.value === '') {
-    //     $('#pswDoctorPassword').addClass('red-border');
-    //     error = true;
-    // }
+
+    let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!pattern.test(doctorEmail.value)) {
+        $('#emlDoctorEmail').addClass('red-border');
+        error = true;
+        alert(pattern.test(doctorEmail.value));
+        doctorEmail.value = '';
+    }
+
+    if (doctorPassword.value === '') {
+        $('#pswDoctorPassword').addClass('red-border');
+        error = true;
+    }
 
     if (doctorCity.value === '') {
         $('#txtDoctorCity').addClass('red-border');

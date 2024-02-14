@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: ;
+            background-color: #f4f4f4;
+        } */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(src/images/istockphoto-1165997279-612x612.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+
+        }
+        .container{
+            height: 99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .subContainer {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin:10px 0px 30px 0px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: 600;
+            /* margin-bottom: 5px; */
+        }
+        select,
+        input[type="submit"] {
+            width: calc(100% - 10px);
+            margin-bottom: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .confirmation {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        select{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="subContainer">
+            <h1>Appointment Request Dashboard</h1>
+            <form id="appointmentForm" onsubmit="confirmAppointment(event)">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" name="doctor">
+                    <option value="">Select Doctor</option>
+                    <!-- Doctor options will be dynamically populated here -->
+                </select>
+    
+                <label for="timeSlot">Select Time Slot:</label>
+                <select id="timeSlot" name="timeSlot">
+                    <option value="">Select Time slot</option>
+                    <!-- Time slot options will be dynamically populated here -->
+                </select>
+    
+                <input type="submit" value="Book Appointment">
+            </form>
+    
+            <div id="confirmation" class="confirmation" style="display: none;">
+                <h2>Appointment request Detail</h2>
+                <p id="confirmationDetails"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve appointment data from localStorage
+        let appointments = JSON.parse(localStorage.getItem('appointmentDetails'));
+       //Retrive current patient data from local storage
+       let currentPatient=JSON.parse(localStorage.getItem('currentPatient'));
+
+        // Populate doctor and time slot options
+        let doctorSelect = document.getElementById('doctor');
+        let timeSlotSelect = document.getElementById('timeSlot');
+
+        appointments.forEach(appointment => {
+            let option = document.createElement('option');
+            option.text = `${appointment.doctorName} - ${appointment.date}`;
+            option.value = JSON.stringify(appointment);
+            doctorSelect.add(option);
+        });
+
+        // Function to update time slot options based on selected doctor
+        function updateSlots() {
+            let selectedDoctor = JSON.parse(doctorSelect.value);
+            timeSlotSelect.innerHTML = '';
+
+            selectedDoctor.timeSlots.forEach(slot => {
+                let option = document.createElement('option');
+                option.text = slot;
+                timeSlotSelect.add(option);
+            });
+        }
+
+        // Event listener to update time slots when doctor is selected
+        doctorSelect.addEventListener('change', updateSlots);
+
+        // Function to handle form submission and confirmation
+        function confirmAppointment(event) {
+            event.preventDefault();
+            let selectedDoctor = JSON.parse(doctorSelect.value);
+            let selectedTimeSlot = timeSlotSelect.value;
+
+            let confirmationDetails = document.getElementById('confirmationDetails');
+            confirmationDetails.textContent = `Doctor Name: ${selectedDoctor.doctorName}\nDate: ${selectedDoctor.date}\nTime Slot: ${selectedTimeSlot}`;
+            
+            // Display confirmation
+            document.getElementById('confirmation').style.display = 'block';
+
+
+            //store appointment request
+            let appointmentrequest=JSON.parse(localStorage.getItem('appointmentRequest'))||[];
+            let newRequest={
+                doctor:selectedDoctor,
+                patientId:currentPatient.id,
+                patientName:currentPatient.name,
+                timeSlots:selectedTimeSlot,
+                status:'pending'
+            }
+            appointmentrequest.push(newRequest);
+            localStorage.setItem('appointmentRequest',JSON.stringify(appointmentrequest));
+
+            setTimeout(()=>{
+                location.href='patientDashboard.html';
+            },4000)
+        }
+    </script>
+</body>
+</html>

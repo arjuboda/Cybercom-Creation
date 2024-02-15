@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -58,9 +58,16 @@
             margin: auto;
             font-weight: 600;
             font-size: 16px;
+            margin-bottom: 10px;
         }
         button:hover {
             background-color: #0056b3;
+        }
+        #updateLocalStorage{
+            background-color: rgba(0, 128, 0, 0.689);
+        }
+        #updateLocalStorage:hover{
+            background-color: rgb(0, 128, 0);
         }
     </style>
 </head>
@@ -74,16 +81,16 @@
                         <th>Patient Name</th>
                         <th>Date</th>
                         <th>Time Slot</th>
-                        <th>status</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="appointmentRequestsBody">
                     <!-- Table rows will be dynamically added here -->
                 </tbody>
             </table>
+            <button id="updateLocalStorage">Update Local Storage</button> <!-- New button added -->
             <button id="goToDashboard">Back to Dashboard</button>
         </div>
-
     </div>
 
     <script>
@@ -96,26 +103,74 @@
             let appointmentRequestsBody = document.getElementById('appointmentRequestsBody');
             appointmentRequestsBody.innerHTML = ''; // Clear previous content
 
-            appointmentRequest.forEach(request => {
+            appointmentRequest.forEach((request, index) => { // Add index parameter to the callback function
                 if (request.doctor.doctorId === currentDoctor.id) {
                     let row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${request.patientName}</td>
                         <td>${request.doctor.date}</td>
                         <td>${request.timeSlots}</td>
-                        <td>${request.status}</td>
+                        <td class="status" data-index="${index}">${request.status}</td> <!-- Use the index parameter -->
                     `;
                     appointmentRequestsBody.appendChild(row);
                 }
             });
+            alert('Double click on status value to change it!')
         }
 
         // Display appointment requests on page load
         displayAppointmentRequests();
-        let btngoToDashboard=document.getElementById('goToDashboard');
-        btngoToDashboard.addEventListener('click',function(){
-            location.href='patientDashboard.html';
-        })
+
+        // Event listener for double-click on status cell
+        document.querySelectorAll('.status').forEach(statusCell => {
+            statusCell.addEventListener('dblclick', function() {
+                const currentIndex = this.getAttribute('data-index');
+                const currentStatus = this.innerText;
+
+                // Create select element
+                const selectElement = document.createElement('select');
+                const optionPending = document.createElement('option');
+                optionPending.value = 'Pending';
+                optionPending.innerText = 'Pending';
+                const optionApprove = document.createElement('option');
+                optionApprove.value = 'Approve';
+                optionApprove.innerText = 'Approve';
+                selectElement.appendChild(optionPending);
+                selectElement.appendChild(optionApprove);
+
+                // Set initial selected option based on current status
+                if (currentStatus === 'Pending') {
+                    optionPending.selected = true;
+                } else if (currentStatus === 'Approve') {
+                    optionApprove.selected = true;
+                }
+
+                // Replace cell content with select element
+                this.innerText = '';
+                this.appendChild(selectElement);
+
+                // Event listener for select element
+                selectElement.addEventListener('change', function() {
+                    // Update status in localStorage
+                    appointmentRequest[currentIndex].status = this.value;
+                    //localStorage.setItem('appointmentRequest', JSON.stringify(appointmentRequest));
+
+                    // Replace select element with selected option
+                    statusCell.innerText = this.value;
+                });
+            });
+        });
+
+        // Update Local Storage button click event
+        document.getElementById('updateLocalStorage').addEventListener('click', function() {
+            localStorage.setItem('appointmentRequest', JSON.stringify(appointmentRequest));
+            alert('Local Storage updated successfully!');
+        });
+
+        // Go back to dashboard button
+        document.getElementById('goToDashboard').addEventListener('click', function() {
+            location.href = 'patientDashboard.html';
+        });
     </script>
 </body>
 </html>

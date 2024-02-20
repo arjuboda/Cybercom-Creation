@@ -21,6 +21,8 @@ function redirectToDashboard() {
                 localStorage.setItem('currentPatient', JSON.stringify(currentPatient));
                 location.href = 'patientDashboard.html';
             } else if (element.email === userName) { //email matched but not password
+                patientFound = true;
+                document.getElementById('pswPassword').style.border = '2px solid red'
                 alert('Password not match!');
             }
         });
@@ -34,13 +36,18 @@ function redirectToDashboard() {
                     localStorage.setItem('currentDoctor', JSON.stringify(currentDoctor));
                     location.href = 'doctorDashboard.html';
                 } else if (element.email === userName) { //email matched but not password
+                    doctorFound = true;
+                    document.getElementById('pswPassword').style.border = '2px solid red'
                     alert('Password not match!');
                 }
             });
-
-            if (!doctorFound) {
-                // If not found in both patient and doctor data
-                alert('User not found!');
+        }
+        if (!doctorFound && !patientFound) {
+            // If not found in both patient and doctor data
+            alert('User not found!');
+            let permission = confirm('You want to register your self?');
+            if (permission) {
+                location.href = 'RegistrationForm.html'
             }
         }
     }

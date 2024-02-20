@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operation</title>
+    <style>
+        table{
+            border-collapse: collapse;
+
+        }
+        tr,th,td{
+            border: 2px solid black;
+            width: 80px;
+            padding: 5px;
+            text-align: center;
+        }
+        th{
+            text-align: center;
+        }
+        #btnEdit{
+            margin-bottom: 5px;
+        }
+        .container{
+            /* border: 2px solid red; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .formContainer{
+            text-align: center;
+            margin-right: 10px;
+        }
+        #btnAddData{
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="formContainer">
+            <form action="#">
+                <input type="number" id="numId" placeholder="Enter your Id" name="numId">
+                <input type="text" id="txtName" placeholder="Enter your Name" name="txtName"><br>
+                <input type="submit" value="ADD Data" id="btnAddData">
+            </form>
+        </div>
+        <div class="formContainer">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <script>
+        let AddBtn = document.getElementById('btnAddData');
+        AddBtn.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            let id = document.getElementById("numId").value;
+            let name = document.getElementById("txtName").value;
+
+            // Get existing data from database.js
+            fetch('database.js')
+            .then(res => res.text()) // Read the response as text
+            .then(scriptText => {
+                // Wrap the script text in an immediately invoked function expression (IIFE)
+                    // to execute it without polluting the global scope
+                    const dataFunction = new Function(`return (${scriptText})`)();
+                    const data = dataFunction();
+                    console.log(data);
+
+                // Add new data to the existing array
+                data.push({ id: parseInt(id), name: name });
+
+                // Convert the data array to a string
+                let newDataString = 'function getData() {\n';
+                newDataString += '    const data = ' + JSON.stringify(data, null, 4) + ';\n';
+                newDataString += '    return data;\n';
+                newDataString += '}\n';
+
+                // Update the database.js file with the new data
+                fetch('database.js', {
+                    method: 'POST',
+                    body: newDataString
+                })
+                .then(() => {
+                    console.log("Data added successfully");
+                    alert("Data added successfully");
+                    
+                    // After adding data, re-fetch and re-render the table
+                    displayTable();
+                })
+                .catch(error => {
+                    console.error('Error updating data:', error);
+                    alert("Error adding data. Please try again.");
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        });
+
+
+        function displayTable(){
+            let tbody=document.getElementById('tbody');
+            fetch('database.js')
+            .then(res => res.text()) // Read the response as text
+            .then(scriptText => {
+                // Wrap the script text in an immediately invoked function expression (IIFE)
+                // to execute it without polluting the global scope
+                const dataFunction = new Function(`return (${scriptText})`)();
+                const data = dataFunction();
+                console.log(data);
+                data.forEach(element => {
+                    let row=document.createElement('tr')
+                    row.innerHTML=`
+                        <td>${element.id}</td>
+                        <td>${element.name}</td>
+                        <td><button id='btnEdit'>Edit</button><button id='btnDelete'>Delete</button></td>
+                        
+                    `
+                    tbody.appendChild(row);
+                    row.querySelectorAll('#btnEdit').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            alert('edit');
+                        });
+                    });
+
+                    row.querySelectorAll('#btnDelete').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            alert('delete');
+                        });
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        }
+        displayTable();
+
+
+    //     document.addEventListener('DOMContentLoaded', function() {
+    // // alert();
+    // let editBtn = document.getElementById('btnEdit');
+    // console.log(editBtn);
+    // editBtn.addEventListener('click', function() {
+    //     alert('edit');
+    // });
+// });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<!-- 
+    //use data in json formate
+fetch('database.js')
+.then(res => res.text()) // Read the response as text
+.then(scriptText => {
+    // Extract the JSON data from the script text
+    const jsonData = extractJSONFromScript(scriptText);
+
+    // Log the extracted JSON text
+    console.log('Extract JSON text:', jsonData);
+
+    // Parse the JSON data
+    try {
+        const parsedData = JSON.parse(jsonData);
+        console.log('Parsed JSON data:', parsedData);
+    } catch (error) {
+        console.error('Error parsing JSON data:', error);
+    }
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
+// Function to extract JSON data from script text
+function extractJSONFromScript(scriptText) {
+// Find the first occurrence of '{' and last occurrence of '}'
+const startIndex = scriptText.indexOf('{');
+const endIndex = scriptText.lastIndexOf('}');
+
+// Ensure both start and end indices are found
+if (startIndex === -1 || endIndex === -1) {
+    console.error('Error: JSON data not found in script');
+    return null;
+}
+
+// Extract the JSON text between the curly braces
+const jsonText = scriptText.substring(startIndex, endIndex + 1);
+
+return jsonText;
+} -->

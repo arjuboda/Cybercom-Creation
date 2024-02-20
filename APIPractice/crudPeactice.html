@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>CRUD Example</h1>
+
+    <h2>Create New Post</h2>
+    <input type="text" id="postTitle" placeholder="Enter post title">
+    <input type="text" id="postBody" placeholder="Enter post body">
+    <button id="createPostButton">Create Post</button>
+
+    <h2>Posts</h2>
+    <ul id="postList"></ul>
+
+    <script>
+        $(document).ready(function() {
+            // Function to fetch posts
+            function fetchPosts() {
+                $('#postList').empty();
+                $.get('https://jsonplaceholder.typicode.com/posts', function(posts) {
+                    posts.forEach(function(post) {
+                        $('#postList').append(`<li>${post.title} - ${post.body} <button class="deletePost" data-id="${post.id}">Delete</button></li>`);
+                    });
+                });
+            }
+
+            // Fetch posts on page load
+            fetchPosts();
+
+            // Create a new post
+            $('#createPostButton').click(function() {
+                var title = $('#postTitle').val();
+                var body = $('#postBody').val();
+                $.post('https://jsonplaceholder.typicode.com/posts', { title: title, body: body, userId: 1 }, function(post) {
+                    fetchPosts();
+                    $('#postTitle').val('');
+                    $('#postBody').val('');
+                });
+            });
+
+            // Delete a post
+            $(document).on('click', '.deletePost', function() {
+                var postId = $(this).data('id');
+                $.ajax({
+                    url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
+                    type: 'DELETE',
+                    success: function(result) {
+                        fetchPosts();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

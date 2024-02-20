@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Operations with JSON Data</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  form {
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <h1>CRUD Operations with JSON Data</h1>
+
+  <!-- Form for adding/editing data -->
+  <form id="data-form">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" readonly>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit" id="save-btn">Save</button>
+    <button type="button" id="cancel-btn">Cancel</button>
+  </form>
+
+  <!-- Table to display data -->
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function fetchDataFromFile(filePath) {
+      try {
+        const response = await fetch(filePath);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+      }
+    }
+
+    function populateTable(data) {
+      const tbody = document.querySelector('#data-table tbody');
+      tbody.innerHTML = '';
+      
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.age}</td>
+          <td>${item.email}</td>
+          <td>
+            <button class="edit-btn" data-id="${item.id}">Edit</button>
+            <button class="delete-btn" data-id="${item.id}">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      const editButtons = document.querySelectorAll('.edit-btn');
+      editButtons.forEach(button => {
+        button.addEventListener('click', handleEdit);
+      });
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', handleDelete);
+      });
+    }
+
+    function handleEdit(event) {
+      const id = event.target.getAttribute('data-id');
+      const selectedItem = data.find(item => item.id == id);
+      if (selectedItem) {
+        document.getElementById('id').value = selectedItem.id;
+        document.getElementById('name').value = selectedItem.name;
+        document.getElementById('age').value = selectedItem.age;
+        document.getElementById('email').value = selectedItem.email;
+      }
+    }
+
+    async function handleDelete(event) {
+      const id = event.target.getAttribute('data-id');
+      try {
+        const response = await fetch('data.json');
+        let jsonData = await response.json();
+    
+        // Find the index of the item with the matching ID
+        const indexToDelete = jsonData.findIndex(item => item.id === id);
+    
+        // If the item is found, remove it from the array
+        if (indexToDelete !== -1) {
+          jsonData.splice(indexToDelete, 1);
+    
+          // Send a PUT request to update the JSON file with the modified data
+          await fetch('data.json', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+          });
+    
+          // Repopulate the table with the updated data
+          populateTable(jsonData);
+        } else {
+          console.error('Item not found');
+        }
+      } catch (error) {
+        console.error('Error deleting data:', error);
+        throw error;
+      }
+    }
+
+    async function postData(url = '', data = {}) {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        return await response.json();
+      } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+      }
+    }
+
+    const filePath = 'data.json';
+    let data = [];
+
+    fetchDataFromFile(filePath)
+      .then(jsonData => {
+        data = jsonData;
+        populateTable(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+    document.getElementById('data-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const id = formData.get('id');
+      const name = formData.get('name');
+      const age = formData.get('age');
+      const email = formData.get('email');
+
+      if (id) {
+        const index = data.findIndex(item => item.id == id);
+        if (index !== -1) {
+          data[index] = { id, name, age, email };
+          await postData('data.json', data);
+        }
+      } else {
+        const newItem = { id: Date.now(), name, age, email };
+        data.push(newItem);
+        await postData('data.json', data);
+      }
+
+      populateTable(data);
+      document.getElementById('data-form').reset();
+    });
+
+    document.getElementById('cancel-btn').addEventListener('click', function() {
+      document.getElementById('data-form').reset();
+    });
+  </script>
+</body>
+</html>

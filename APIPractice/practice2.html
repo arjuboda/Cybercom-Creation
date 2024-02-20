@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Fetcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #userContainer {
+            margin-top: 20px;
+        }
+        #userContainer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #userContainer li {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Fetcher</h1>
+    <button id="fetchUserButton">Fetch Users</button>
+    <div id="userContainer"></div>
+
+    <script>
+        const fetchUserButton = document.getElementById('fetchUserButton');
+        const userContainer = document.getElementById('userContainer');
+
+        fetchUserButton.addEventListener('click', () => {
+            fetch('https://reqres.in/api/users?page=2&per_page=4')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    console.log(data.data)
+                    if (data && data.data && data.data.length > 0) {
+                        const users = data.data;
+                        userContainer.innerHTML = '';
+                        const userList = document.createElement('ul');
+                        users.forEach(user => {
+                            const listItem = document.createElement('li');
+                            listItem.innerHTML = `
+                                <img src="${user.avatar}" alt="${user.first_name}">
+                                <p>Name: ${user.first_name} ${user.last_name}</p>
+                                <p>Email: ${user.email}</p>
+                            `;
+                            userList.appendChild(listItem);
+                        });
+                        userContainer.appendChild(userList);
+                    } else {
+                        userContainer.innerHTML = 'No users found.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching users:', error);
+                    userContainer.innerHTML = 'Failed to fetch users. Please try again later.';
+                });
+        });
+    </script>
+</body>
+</html>

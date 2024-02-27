@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="productAPI.css">
+    <title>Add Product</title>
+</head>
+<body>
+    <!-- <div class="container"> -->
+        <div class="subContainer">
+            <div class="formContainer">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <h2>Add Product</h2>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="image">Image URL:</label>
+                    <input type="text" id="image" name="image" required>
+                    
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" required>
+                    
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                    
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select category</option>
+                        <!-- <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="books">Books</option> -->
+                    </select>
+                    
+                    <input type="submit" value="Submit" class="button btnSubmit" onclick="addProduct()">
+                    <input type="reset" value="Reset" class="button btnReset"> <br>
+                    <a href="productAPI.html" class="button">&lt;-- Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let url = 'https://api.escuelajs.co/api/v1';
+        // Fetch categories from API and populate the dropdown
+        fetch(url+'/categories') // Replace API_ENDPOINT with the actual endpoint
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data);
+                const categoryDropdown = document.getElementById('category');
+                data.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.id;
+                    option.text = category.name;
+                    categoryDropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching categories:', error));
+
+        function addProduct() {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const image = document.getElementById('image').value;
+            const price = document.getElementById('price').value;
+            const description = document.getElementById('description').value;
+            const categoryId = document.getElementById('category').value;
+            
+            const newProduct = {
+                title: title,
+                price: parseFloat(price),
+                description: description,
+                categoryId: parseInt(categoryId),
+                images: [image]
+            };
+
+            fetch('https://api.escuelajs.co/api/v1/products/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newProduct)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert('Product added successfully!');
+                location.reload();
+            })
+            .catch(err => {
+                console.error('Error adding product:', err);
+                alert('Failed to add product. Please try again.');
+            });
+        }
+
+    </script>
+</body>
+</html>

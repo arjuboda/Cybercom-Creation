@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <link rel="stylesheet" href="productAPI.css">
+</head>
+<body>
+    <div class="subContainer">
+        <div class="formContainer">
+            <form id="updateProductForm" action="#" method="post" enctype="multipart/form-data">
+                <h2>Update Product</h2>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="image" required>
+                
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+                
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select category</option>
+                </select>
+                
+                <input type="submit" value="Update">
+                <input type="reset" value="Reset"> <br>
+                <a href="productAPI.html" class="button">&lt;-- Back</a>
+            </form>
+        </div>
+    </div>
+
+<script>
+    function getProductIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
+    
+    // Function to fetch and display category options
+    function displayCategoryOptions(selectedCategoryId) {
+        fetch('https://api.escuelajs.co/api/v1/categories') 
+        .then(response => response.json())
+        .then(data => {
+            const categoryDropdown = document.getElementById('category');
+            data.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.text = category.name;
+                if (category.id === selectedCategoryId) {
+                    option.selected = true; // Set the selected option based on retrieved product's category ID
+                }
+                categoryDropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching categories:', error));
+    }
+
+    window.onload = function() {
+        let productId = getProductIdFromUrl();
+
+        if (productId) {
+            const url = `https://api.escuelajs.co/api/v1/products/${productId}`;
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('title').value = data.title;
+                document.getElementById('image').value = data.images[0].trim();
+                document.getElementById('price').value = data.price;
+                document.getElementById('description').value = data.description;
+                displayCategoryOptions(data.category.id);
+            })
+            .catch(err => console.error('Error fetching product details:', err));
+        }
+
+        document.getElementById('updateProductForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const updatedProduct = {
+                title: document.getElementById('title').value.trim(),
+                images: [document.getElementById('image').value.trim()],
+                price: parseFloat(document.getElementById('price').value.trim()),
+                description: document.getElementById('description').value.trim(),
+                categoryId: parseInt(document.getElementById('category').value)
+            };
+            // console.log(updatedProduct);
+
+
+            fetch(`https://api.escuelajs.co/api/v1/products/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedProduct)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update product');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log( data);
+                alert('Product updated successfully:');
+            })
+            .catch(error => {
+                console.error('Error updating product:', error);
+            });
+        });
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <style>
+        .container
+        {
+            width: 50%;
+            margin: auto;
+            padding:20px 50px;
+            box-shadow: 0px 0px 4px black;
+            border-radius: 5px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        h2{
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 2px solid  rgb(141, 141, 141);
+            margin-bottom: 20px;
+        }
+        #btnContainer{
+            text-align: center;   
+        }
+        input[type="submit"] {
+            padding: 15px 0px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 30%;
+            font-weight: 600;
+        }
+        input[type="submit"]:hover{
+            background-color: #0062cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Product</h2>
+        <form id="updateForm">
+            <label for="updateTitle">Title:</label>
+            <input type="text" id="updateTitle" name="updateTitle" required>
+    
+            <label for="updateCategory">Category:</label>
+            <input type="text" id="updateCategory" name="updateCategory" required>
+    
+            <label for="updateDescription">Description:</label>
+            <input type="text" id="updateDescription" name="updateDescription" required>
+    
+            <label for="updateDiscount">Discount (%):</label>
+            <input type="text" id="updateDiscount" name="updateDiscount" required>
+    
+            <label for="updatePrice">Price:</label>
+            <input type="number" id="updatePrice" name="updatePrice" required>
+    
+            <label for="updateRating">Rating:</label>
+            <input type="number" id="updateRating" name="updateRating" required step="0.01">
+            <div id="btnContainer">
+                <input type="submit" value="Update" id="btnUpdate">
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Parse query string to get product ID
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const productId = urlParams.get('id');
+            console.log(productId)
+
+            // Retrieve products from local storage
+            const storedProducts = JSON.parse(localStorage.getItem('products'));
+            // Find the product with the corresponding productId
+            const productToUpdate = storedProducts.find(product => product.id ==productId);
+            // Populate form fields with the product details
+            document.getElementById('updateTitle').value = productToUpdate.title;
+            document.getElementById('updateCategory').value = productToUpdate.category;
+            document.getElementById('updateDescription').value = productToUpdate.description;
+            document.getElementById('updateDiscount').value = productToUpdate.discountPercentage;
+            document.getElementById('updatePrice').value = productToUpdate.price;
+            document.getElementById('updateRating').value = productToUpdate.rating;
+            // Populate other form fields similarly
+
+            // Handle form submission
+            document.getElementById('updateForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get updated values from form fields
+                const updatedTitle = document.getElementById('updateTitle').value;
+                const updatedCategory = document.getElementById('updateCategory').value;
+                const updatedDescription = document.getElementById('updateDescription').value;
+                const updatedDiscount = document.getElementById('updateDiscount').value;
+                const updatedPrice = document.getElementById('updatePrice').value;
+                const updatedRating = document.getElementById('updateRating').value;
+               
+                // Update the product details in local storage
+                // Update the product details in local storage
+                const updatedProducts = storedProducts.map(product => {
+                    if (product.id == productId) { // Use loose equality here
+                        return {
+                            ...product,
+                            title: updatedTitle,
+                            category:updatedCategory,
+                            description: updatedDescription,
+                            discountPercentage:updatedDiscount,
+                            price:updatedPrice,
+                            rating:updatedRating
+                        };
+                    }
+                    return product;
+                });
+                localStorage.setItem('products', JSON.stringify(updatedProducts));
+
+                // Close the update form window
+                window.close();
+
+                // Refresh the product display in the main window
+                window.opener.displayProducts(updatedProducts);
+            });
+        };
+    </script>
+</body>
+</html>

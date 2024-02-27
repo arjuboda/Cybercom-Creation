@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Data and LocalStorage Editor</title>
+<style>
+    
+    body {
+        font-family: Arial, sans-serif;
+    }
+    form{
+        box-shadow: 0px 0px 4px black;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        padding: 30px;
+    }
+    table{
+        margin: auto;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+    tr,td,th{
+        padding: 5px;
+    }
+    button {
+        cursor: pointer;
+    }
+    form{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .form-row{
+        width: 100%;
+        padding: 10px 0px;
+    }
+    label{
+        width: 30%;
+    }
+    input{
+        flex: 1;
+    }
+</style>
+</head>
+<body>
+    <form id="data-form">
+    <h1>API Data and LocalStorage Editor</h1>
+    <div class="form-row">
+        <label for="id">ID:</label>
+        <input type="text" id="id" disabled>
+    </div>
+    <div class="form-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+    </div>
+    <div class="form-row">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+    </div>
+    <div class="form-row">
+        <button type="submit">Add Data</button>
+        <button type="button" id="updateBtn" style="display:none;">Update Data</button>
+        <button type="button" id="cancelBtn" style="display:none;">Cancel</button>
+    </div>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gmail</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+</table>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("data-form");
+    
+    const tableBody = document.getElementById("tbody");
+    const idField = document.getElementById("id");
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const apiUrl = "https://reqres.in/api/users";
+    let users = [];
+ async function fetchUsers() {
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error("Failed to fetch user data");
+            }
+            const data = await response.json();
+            users = data.data.map(user => ({
+                id: user.id,
+                name: `${user.first_name} ${user.last_name}`,
+                email: user.email
+            }));
+            console.log("User data fetched:", users);
+            displayUsers();
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    }
+
+    // Function to display users in the list
+    function displayUsers() {
+        tableBody.innerHTML='';
+        users.forEach(user=>{
+            let row=document.createElement('tr');
+            row.innerHTML=`
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td><button class="edit-btn" data-id="${user.id}">Edit</button><button class="delete-btn" data-id="${user.id}">Delete</button></td>`
+            tableBody.appendChild(row);
+        })
+        // dataList.innerHTML = "";
+        // users.forEach(user => {
+        //     const listItem = document.createElement("li");
+        //     listItem.innerHTML = `
+        //         <span>${user.id}</span>
+        //         <span>${user.name}</span>
+        //         <span>${user.email}</span>
+        //     `;
+        //     dataList.appendChild(listItem);
+        // });
+    }
+
+    // Call the fetchUsers function to fetch and populate user data
+    fetchUsers();
+
+    // Handle form submission
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        if (name && email) {
+            const id = Date.now(); // Generate a unique ID for local storage
+            const data = { id, name, email };
+            users.push(data); // Add data to the users array
+            localStorage.setItem('users', JSON.stringify(users)); // Update local storage
+            displayUsers(); // Update the displayed list
+            form.reset(); // Clear form fields after adding data
+        }
+    });
+
+    // Handle edit and delete buttons click
+    dataList.addEventListener("click", function(event) {
+        const target = event.target;
+        if (target.classList.contains("edit-btn")) {
+            const id = target.getAttribute("data-id");
+            const user = users.find(user => user.id === parseInt(id));
+            idField.value = user.id;
+            nameField.value = user.name;
+            emailField.value = user.email;
+            document.getElementById("updateBtn").style.display = "inline";
+            document.getElementById("cancelBtn").style.display = "inline";
+            document.getElementById("data-form").setAttribute("data-id", id);
+        } else if (target.classList.contains("delete-btn")) {
+            const id = target.getAttribute("data-id");
+            users = users.filter(user => user.id !== parseInt(id)); // Remove data from the users array
+            localStorage.setItem('users', JSON.stringify(users)); // Update local storage
+            displayUsers(); // Update the displayed list
+        }
+    });
+
+    // Handle update button click
+    document.getElementById("updateBtn").addEventListener("click", function() {
+        const id = idField.value;
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        if (name && email) {
+            const index = users.findIndex(user => user.id === parseInt(id));
+            users[index].name = name;
+            users[index].email = email;
+            localStorage.setItem('users', JSON.stringify(users)); // Update local storage
+            displayUsers(); // Update the displayed list
+            form.reset(); // Clear form fields after updating data
+            document.getElementById("updateBtn").style.display = "none";
+            document.getElementById("cancelBtn").style.display = "none";
+            document.getElementById("data-form").removeAttribute("data-id");
+        }
+    });
+
+    // Handle cancel button click
+    document.getElementById("cancelBtn").addEventListener("click", function() {
+        form.reset();
+        document.getElementById("updateBtn").style.display = "none";
+        document.getElementById("cancelBtn").style.display = "none";
+        document.getElementById("data-form").removeAttribute("data-id");
+    });
+});
+</script>
+</body>
+</html>

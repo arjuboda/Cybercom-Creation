@@ -1,0 +1,108 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(247, 247, 241);
+}
+
+.container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 70%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+select {
+    font-size: 16px;
+    padding: 10px;
+    width: 30%;
+    margin: 20px auto;
+}
+
+#productList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 50px 30px;
+    background-color: #ffffff00;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 60%;
+}
+
+.leftPart {
+    width: 40%;
+}
+
+.rightPart {
+    width: 60%;
+}
+
+img {
+    height: 200px;
+    width: 90%
+}
+
+p {
+    margin: 10px auto;
+}
+
+.btnDel {
+    padding: 10px;
+    width: 30%;
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    font-weight: 500;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.btnUpdate {
+    padding: 10px;
+    width: 30%;
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    font-weight: 500;
+    border: none;
+    border-radius: 3px;
+}
+
+#pagination {
+    margin-top: 20px;
+}
+
+#pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#pagination button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}

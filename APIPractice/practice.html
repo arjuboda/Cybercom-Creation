@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API practice</title>
+</head>
+<body>
+    <script>
+
+        // get request : taek data from server
+    // value : state
+    //    0  : unsent
+    //    1  : opened
+    //    2  : Header_receives
+    //    3  : loading
+    //    4  : Done
+        //******************************
+        // const url = 'https://reqres.in/api/user';
+        // let xhr =new XMLHttpRequest();
+        //     xhr.onreadystatechange=function(){
+        //         console.log(this.readyState,xhr.status);
+        //     }
+        //        xhr.open('get',url);
+        //        xhr.addEventListener('load',function(){
+        //         if(xhr.readyState===XMLHttpRequest.DONE && xhr.status===200 ){
+        //             console.log(JSON.parse(xhr.responseText));
+        //         }
+        //         else{
+        //             console.error('something went wrong');
+        //         }
+        //        })
+        //        xhr.send(); 
+
+
+        //post request : set the data
+        //******************************
+            // let newData={
+            //         'name':'arju',
+            //         'age':21
+            //     }
+            // let url='https://reqres.in/api/user'
+            // let xhr=new XMLHttpRequest;
+            // xhr.open('post',url);
+            // xhr.setRequestHeader('Content-Type','application/json')
+            // xhr.addEventListener('load',function(){
+            //     if(xhr.readyState===XMLHttpRequest.DONE && xhr.status===201 ){
+            //         console.log(JSON.parse(xhr.responseText));
+            //     }
+            //     else{
+            //         console.error('something went wrong');
+            //     }
+            // })
+            // xhr.send(JSON.stringify(newData));
+            
+
+        //put Request : update the data
+        //******************************
+        //  let newData={
+        //             'name':'arju',
+        //             'age':21
+        //         }
+        //     let url2='https://reqres.in/api/user/2'
+        //     let xhr2=new XMLHttpRequest;
+        //     xhr2.open('put',url2);
+        //     xhr2.setRequestHeader('Content-Type','application/json')
+        //     xhr2.addEventListener('load',function(){
+        //         if(xhr2.readyState===XMLHttpRequest.DONE && xhr2.status===200 ){
+        //             console.log(JSON.parse(xhr2.responseText));
+        //         }
+        //         else{
+        //             console.error('something went wrong');
+        //         }
+        //     })
+        //     xhr2.send(JSON.stringify(newData));
+            
+
+        //delete : use to delete the data
+        //******************************
+            // let url3='https://reqres.in/api/user/2'
+            // let xhr3=new XMLHttpRequest;
+            // xhr3.open('delete',url3);
+            // xhr3.setRequestHeader('Content-Type','application/json')
+            // xhr3.addEventListener('load',function(){
+            //     if(xhr3.readyState===XMLHttpRequest.DONE && xhr3.status===204 ){
+            //         console.log('request for delete the data is executed!');
+            //     }
+            //     else{
+            //         console.error('something went wrong');
+            //     }
+            // })
+            // xhr3.send();
+
+
+
+//*********************************************************************************************
+    //using fetch()
+//***************** ****************************************************************************
+
+        //get request
+            // fetch('https://reqres.in/api/user')
+            // .then((res)=>res.json())
+            // .then((rspns)=>{
+            //     console.log(rspns.data[1])
+            // })
+            // .catch((err)=>{
+            //     console.log(err);
+            // })
+
+        //post request
+            // fetch('https://reqres.in/api/user/2',{
+            //     method:'POST',
+            //     headers:{
+            //         'Content-Type':'application/json'
+            //     },
+            //     body:JSON.stringify({
+            //         name:'arju',
+            //         age:21
+            //     })
+            // })
+            // .then((res)=>{
+            //     return res.json()
+            // })
+            // .then((rspns)=>{
+            //     console.log(rspns)
+            // })
+            // .catch(()=>{
+            //     console.log('error');
+            // })
+            //Other Example
+            // let function1=async()=>{
+            //     const components={
+            //         method:'POST',
+            //         Headers:{
+            //             'Content-Type':'application/json'
+            //         },
+            //         body:{
+            //             name:'arju',
+            //             id:1,
+            //             age:21
+            //         }
+            //     }
+            //     let p = await fetch('https://reqres.in/api/user',components);
+            //     let res=p.json();
+            //     return res;
+
+            // }
+            // let resultFun=async()=>{
+            //     let rspnc= await function1();
+            //     console.log(rspnc);
+            // }
+            // resultFun();
+
+        //put request
+            // fetch('https://reqres.in/api/user/2',{
+            //     method:'PUT',
+            //     headers:{
+            //         'Content-Type':'application/json'
+            //     },
+            //     body:JSON.stringify({
+            //         name:'arju',
+            //         age:21
+            //     })
+            // })
+            // .then((res)=>{
+            //     return res.json()
+            // })
+            // .then((rspns)=>{
+            //     console.log(rspns)
+            // })
+            // .catch(()=>{
+            //     console.log('error');
+            // })
+
+
+        //delete request
+            // fetch('https://reqres.in/api/user/2',{
+            //     method:'DELETE',
+            //     headers:{
+            //         'Content-Type':'application/json'
+            //     }
+            // })
+            // .then(()=>{
+            //     console.log('deleted')
+            // })
+            
+            // .catch(()=>{
+            //     console.log('error');
+            // })
+
+
+    </script>
+</body>
+</html>

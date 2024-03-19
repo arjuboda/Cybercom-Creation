@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+
+}
+.country-container {
+    display: inline-block;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.country-container h2 {
+    margin-top: 0;
+}
+/* img{
+    width: 100%;
+} */
+.country-container p {
+    margin: 5px 0;
+}
+
+.country-flag {
+    max-width: 100%;
+    height: 50px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Country Information</h1>
+    <div class="container">
+
+    </div>
+    <script >
+        async function getWeather(city) {
+    const apiUrl = 'https://restcountries.com/v3.1/all';
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        // Limit the data to the first 50 countries
+        const countries = data.slice(0, 50);
+        console.log(countries)
+        // Iterate through each country and create a container for it
+        countries.forEach(country => {
+            createCountryContainer(country);
+        });
+    } catch (error) {
+        console.error('Error fetching country data:', error);
+    }
+}
+
+function createCountryContainer(country) {
+    const container = document.createElement('div');
+    container.classList.add('country-container');
+
+    const nameElement = document.createElement('h2');
+    nameElement.textContent = country.name.common;
+
+    const capitalElement = document.createElement('p');
+    capitalElement.textContent = `Capital: ${country.capital}`;
+
+    const populationElement = document.createElement('p');
+    populationElement.textContent = `Population: ${country.population}`;
+
+    const countryFlag = document.createElement('img');
+    countryFlag.classList.add('countryFlag')
+    countryFlag.src = `${country.flags.png}`;
+    countryFlag.alt = `${country.flags.alt}`;
+
+
+    // Add more elements for other data you want to display
+
+    // Append elements to the container
+    container.appendChild(nameElement);
+    container.appendChild(capitalElement);
+    container.appendChild(populationElement);
+    container.appendChild(countryFlag);
+    // Append the container to the document
+    document.body.appendChild(container);
+}
+
+// Call the function to fetch and display country data
+getWeather();
+
+    </script>
+</body>
+</html>

@@ -4,7 +4,8 @@
       <form @submit.prevent="submitForm">
         <div :class="['form-group', { 'error': !user.name }]">
           <label for="txtName">Name</label>
-          <input type="text" id="txtName" v-model="user.name" :class="{ 'error-border': !user.name }" placeholder="Enter your name">
+          <txtInputField v-model="user.name" :class="{ 'error-border': !user.name }"/>
+          <!-- <input type="text" id="txtName" v-model="user.name" :class="{ 'error-border': !user.name }" placeholder="Enter your name"> -->
         </div>
         <div :class="['form-group', { 'error': !user.address }]">
           <label for="txtAddress">Address</label>
@@ -34,23 +35,26 @@
         </div>
         <div class="form-group">
           <input type="checkbox" id="chkVerify" value="true" v-model="user.verify">
-          <label for="chkVerify">I confirm that the details provided are accurate.</label>
+          <label for="chkVerify" v-bind="$attrs">I confirm that the details provided are accurate.</label>
         </div>
         <button type="submit" :style="{ 'background-color': user.name && user.address ? '#4CAF50' : '#ccc' }">Submit</button>
       </form>
       <div v-show="showPopup" class="popup">
-        <PopUp @Close="showPopup=false" :detail="user" />
+        <PopUp @Close="closePopup" :detail="user" />
       </div>
     </div>
   </template>
   
   <script>
   import PopUp from './PopUp.vue';
+import txtInputField from './txtInputField.vue';
   
   export default {
     name: 'SignUpForm',
+    inheritAttrs:false,
     components: {
-      PopUp
+      PopUp,
+      txtInputField
     },
     data() {
       return {
@@ -67,6 +71,10 @@
     methods: {
       submitForm() {
         this.showPopup = true;
+      },
+      closePopup(name){
+        this.showPopup = false;
+        console.log(name);
       }
     }
   }
@@ -86,7 +94,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  
+  .form-group,
   .form-row {
     display: flex;
     align-items: center;
@@ -106,7 +114,7 @@
     flex: 3;
   }
   
-  input[type="text"],
+  
   textarea {
     box-sizing: border-box;
     padding: 10px;
@@ -114,10 +122,11 @@
     border-radius: 5px;
   }
   
-  .checkbox-group,
+   .checkbox-group,
   .radio-group {
-    display: flex;
-  }
+     display: flex; 
+     margin: 10px auto;
+  } 
   
   .checkbox-group label,
   .radio-group label {
@@ -135,5 +144,13 @@
   
   .popup {
     margin-top: 20px;
+  }
+  #chkVerify{
+    width: 100px;
+    flex: none;
+  }
+
+  #confirmLabel{
+    text-align: left;
   }
   </style>

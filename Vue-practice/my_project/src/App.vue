@@ -1,4 +1,4 @@
-<template>
+<!-- <template>-->
   <!-- <SignupForm id="confirmLabel"/> -->
   <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>-->
@@ -25,7 +25,7 @@
         <h1>this is {{ slotProps.uname }}</h1>
       </template>
     </cardComponent> -->
-
+<!-- 
 
     <button @click="isActive='tabA'">TabA</button>
     <button @click="isActive='tabB'">TabB</button>
@@ -33,37 +33,47 @@
     <button @click="isActive='HelloWorld'">HelloWorld</button>
     <button @click="isActive='signupForm'">SignupForm</button>
     <button @click="isActive='AboutUs'">AboutUs</button>
+    <button @click="isActive='parentComponent'">lifecycle Hooks</button><br/><br/> -->
+    
     <!-- <tabA v-if="isActive=='tabA'"/>
     <tabB v-if="isActive=='tabB'"/>
     <tabC v-if="isActive=='tabC'"/> -->
-    <keep-alive>
+
+    <!-- <keep-alive>
       <component :is="isActive"></component>
-    </keep-alive>
+    </keep-alive> -->
+<!--
+    <parenComponent/>
+
 </template>
 
 <script>
-import TabA from './components/tabA.vue';
-import TabB from './components/tabB.vue';
-import TabC from './components/tabC.vue';
 
-import HelloWorld from './components/HelloWorld.vue';
-import SignupForm from './components/SignupForm.vue';
+// import TabA from './components/tabA.vue';
+// import TabB from './components/tabB.vue';
+// import TabC from './components/tabC.vue';
+// import txtInputField from './components/txtInputField.vue';
+// import HelloWorld from './components/HelloWorld.vue';
+// import SignupForm from './components/SignupForm.vue';
 // import cardComponent from './components/card.vue';
-import AboutUs from './components/AboutUs.vue';
+// import AboutUs from './components/AboutUs.vue';
 // import componentC from './components/componentC.vue';
 
+// import parentComponent from './components/parenComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    SignupForm,
-    AboutUs,
+    // HelloWorld,
+    // SignupForm,
+    // AboutUs,
     // componentC,
     // cardComponent,
-    TabA,
-    TabB,
-    TabC
+    // TabA,
+    // TabB,
+    // TabC,
+    // parentComponent,txtInputField
+    ToDoList
   },
   data(){
     return {
@@ -86,4 +96,22 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
+</style> -->
+
+<template>
+    <toDoList/>
+</template>
+ 
+ <script>
+ import toDoList from './components/toDoList.vue';
+ 
+  export default {
+    components:{
+      toDoList
+    }
+  }
+ </script>
+ 
+ <style lang="scss" scoped>
+ 
+ </style>

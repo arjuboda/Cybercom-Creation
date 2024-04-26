@@ -1,9 +1,15 @@
 <template>
-    <input type="text" >
+    <div>
+        <input type="text" ref="nameInput">
+    </div>
 </template>
 <script>
 export default{
-    name:'txtInputFeild'
+    name:'txtInputFeild',
+    mounted(){
+        console.log('inmounted',this.$refs)
+      this.$refs.nameInput.focus();
+    }
 }
 </script>
 

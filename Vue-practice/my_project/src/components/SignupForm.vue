@@ -4,7 +4,7 @@
       <form @submit.prevent="submitForm">
         <div :class="['form-group', { 'error': !user.name }]">
           <label for="txtName">Name</label>
-          <txtInputField v-model="user.name" :class="{ 'error-border': !user.name }" ref="nameinput"/>
+          <txtInputField v-model="user.name" :class="{ 'error-border': !user.name }" />
           <!-- <input type="text" id="txtName" v-model="user.name" :class="{ 'error-border': !user.name }" placeholder="Enter your name"> -->
         </div>
         <div :class="['form-group', { 'error': !user.address }]">
@@ -76,9 +76,6 @@ import txtInputField from './txtInputField.vue';
         this.showPopup = false;
         console.log(name);
       }
-    },
-    mounted(){
-      this.$refs.nameinput.focus();
     }
   }
   </script>

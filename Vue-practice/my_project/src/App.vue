@@ -98,20 +98,35 @@ export default {
 }
 </style> -->
 
+
+<!-- 
 <template>
-    <toDoList/>
+<storeCompoonent1/>
+<storeCompoonent2/>
 </template>
  
  <script>
- import toDoList from './components/toDoList.vue';
- 
+//  import toDoList from './components/toDoList.vue';
+ import storeCompoonent1 from './components/storeCompoonent1.vue';
+ import storeCompoonent2 from './components/storeCompoonent2.vue';
   export default {
     components:{
-      toDoList
+      // toDoList,
+      storeCompoonent1,
+      storeCompoonent2
     }
   }
  </script>
  
  <style lang="scss" scoped>
  
- </style>
+ </style> 
+ -->
+
+<template>
+  <router-link to="/">home</router-link> | 
+  <router-link to="/signup">signup</router-link> |
+  <router-link to="/about">About</router-link> |
+  <router-link to="/storePractice">storepractice</router-link> 
+  <router-view></router-view>
+</template>

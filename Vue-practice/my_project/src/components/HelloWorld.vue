@@ -2,8 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <button @click="increment">
-      {{count}}
-    </button>
+    click</button>
+    {{count}}
    
   </div> 
 </template>

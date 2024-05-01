@@ -1,31 +1,37 @@
  <template>
     <h1>{{ formTitle }}</h1>
     <label for="emlEmail">Email</label><br/>
-    <input type="email" name="emlEmail" id="emlEmail" placeholder="Enter Your email address " v-model="email">
+    <input type="email" name="emlEmail" id="emlEmail" placeholder="Enter Your email address " v-model.lazy="userDetail.email">
     <br/><br/>
     <label for="pswPassword">Password</label><br/>
-    <input type="password" name="pswPassword" id="pswPassword" placeholder="Enter your password" ref="refPassword" v-model="password"><br/>
+    <input type="password" name="pswPassword" id="pswPassword" placeholder="Enter your password" ref="refPassword" v-model.lazy="userDetail.password"><br/>
     <br/><br/>
     <label>Technology</label><br/>
-    <input type="checkbox" name="chkbxVue" id="chkbxVue" value="VueJs"  v-model="technologies"><label for="chkbxVue">Vue</label>
-    <input type="checkbox" name="chkbxJava" id="chkbxJava" value="Java"  v-model="technologies"><label for="chkbxJava">Java</label>
-    <input type="checkbox" name="chkbxPhp" id="chkbxPhp" value="PHP"  v-model="technologies"><label for="chkbxPhp">PHP</label>
+    <input type="checkbox" name="chkbxVue" id="chkbxVue" value="VueJs"  v-model.lazy="userDetail.technologies"><label for="chkbxVue">Vue</label>
+    <input type="checkbox" name="chkbxJava" id="chkbxJava" value="Java"  v-model="userDetail.technologies"><label for="chkbxJava">Java</label>
+    <input type="checkbox" name="chkbxPhp" id="chkbxPhp" value="PHP"  v-model="userDetail.technologies"><label for="chkbxPhp">PHP</label>
     <br/><br/>
     <label>Gender</label><br/>
-    <input type="radio" value="Male" name="rdGender" id="rdGenderMale" v-model="gender"><label for="rdGenderMale">Male</label>
-    <input type="radio" value="Female" name="rdGender" id="rdGenderFemale" v-model="gender"><label for="rdGenderFemale">Feale</label>
-    <input type="radio" value="Other" name="rdGender" id="rdGenderother" v-model="gender"><label for="rdGenderOther">Other</label>
+    <input type="radio" value="Male" name="rdGender" id="rdGenderMale" v-model="userDetail.gender"><label for="rdGenderMale">Male</label>
+    <input type="radio" value="Female" name="rdGender" id="rdGenderFemale" v-model="userDetail.gender"><label for="rdGenderFemale">Female</label>
+    <input type="radio" value="Other" name="rdGender" id="rdGenderOther" v-model="userDetail.gender"><label for="rdGenderOther">Other</label>
     <br/><br/>
     <button @click="getData" type="button"> Display Data</button>
-    <button v-on:click="sendUserDetails(userDetails)">get user details</button>
+    <button v-on:click="sendUserDetails(userDetail)">Show user details</button>
     <br/><br/><br/>
     <h2>Form data</h2>
-    <!-- <p v-show="clicked" >
-        Email: {{ email }}<br/>
-        Password: {{ password }} <br/>
-        Technology: {{ technologies }}<br/>
-        Gender: {{ gender }}
-    </p> -->
+    <p v-show="clicked" >
+        Email: {{ userDetail.email }}<br/>
+        Password: {{ userDetail.password }} <br/>
+        Technology: {{ userDetail.technologies }}<br/>
+        Gender: {{ userDetail.gender }}
+    </p>
+
+    <ul>
+      <li v-for="item in error" v-bind:key="item">
+      {{ item }} is require feild!
+      </li>
+    </ul>
 </template>
 
 <script>
@@ -37,27 +43,35 @@ export default{
     },
     data(){
         return{
+          userDetail:{
             email:'',
             password:null,
             technologies:[],
-            gender:[],
-            clicked:false,
-            userDetails:{}
+            gender:[]
+          },
+          clicked:false,
+          error:[]
         }
     },
     created() {
-        this.email = this.newemail;
-        this.userDetails={
-            email:this.email,
-            password:this.password,
-            technologies:this.technologies,
-            gender:this.gender
-        }
+        this.userDetail.email = this.newemail;
     },
     methods:{
         getData(){
             this.clicked=true;
-            // console.log(this.$refs.refPassword.value)
+            this.error=[];
+            for(let item in this.userDetail){
+              if(this.userDetail[item]==null||this.userDetail[item]==''){
+                this.error.push(item);
+              }
+            }
+            console.log(this.error);
+            // if(this.error.length==0){
+            //   alert('no error!')
+            // }
+            // else{
+            //   alert(this.error+ ' feilds are require feilds!')
+            // }
         }
     }
 }

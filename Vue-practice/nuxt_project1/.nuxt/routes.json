@@ -1,0 +1,30 @@
+[
+  {
+    "name": "cart",
+    "path": "/cart",
+    "component": "C:\\\\Users\\\\arju1\\\\Documents\\\\GitHub\\\\Cybercom-Creation\\\\html_cssTask\\\\Vue-practice\\\\nuxt_project1\\\\pages\\\\cart.vue",
+    "chunkName": "pages/cart",
+    "_name": "_7a517821"
+  },
+  {
+    "name": "Login",
+    "path": "/Login",
+    "component": "C:\\\\Users\\\\arju1\\\\Documents\\\\GitHub\\\\Cybercom-Creation\\\\html_cssTask\\\\Vue-practice\\\\nuxt_project1\\\\pages\\\\Login.vue",
+    "chunkName": "pages/Login",
+    "_name": "_52794fd0"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "C:\\\\Users\\\\arju1\\\\Documents\\\\GitHub\\\\Cybercom-Creation\\\\html_cssTask\\\\Vue-practice\\\\nuxt_project1\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_51a0884e"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\arju1\\\\Documents\\\\GitHub\\\\Cybercom-Creation\\\\html_cssTask\\\\Vue-practice\\\\nuxt_project1\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_d4acd5be"
+  }
+]

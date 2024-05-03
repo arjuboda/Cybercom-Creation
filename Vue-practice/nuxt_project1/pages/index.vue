@@ -1,16 +1,18 @@
 <template>
-    <h2>this is home page</h2>
-    <input v-model="message" type="text">
-    <p>{{ message }}</p>
-    <br/>   
-    <nuxtLink to="/about">Go to About page</nuxtLink>
+    <div>
+        <h1>Home Page</h1>
+    </div>
 </template>
+
 <script>
-export default {
-    data() {
-        return {
-            message: ''
+    export default {
+        // layout: 'product',
+        layout (context) {
+            return 'blog'
         }
     }
-}
 </script>
+
+<style lang="scss" scoped>
+
+</style>
